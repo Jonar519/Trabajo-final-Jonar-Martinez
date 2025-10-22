@@ -84,7 +84,7 @@ export default function CV() {
               <p className="text-gray-300 text-sm">{content.site.location}</p>
             </div>
 
-            {/* Redes Sociales */}
+            {/* Redes Sociales - CORREGIDO */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="text-cyan-400">🌐</span> {cv.sections.socialNetworks}
@@ -99,9 +99,11 @@ export default function CV() {
                     className={`flex flex-col items-center p-3 rounded-lg ${social.bgColor} ${social.borderColor} border-2 ${social.glowColor} transition-all duration-300 hover:scale-105 hover:shadow-lg`}
                   >
                     <div className="w-8 h-8 mb-2 flex items-center justify-center">
-                      <img 
+                      <Image 
                         src={social.icon} 
                         alt={social.name}
+                        width={24}
+                        height={24}
                         className="w-6 h-6"
                       />
                     </div>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 
 export default function Footer() {
@@ -8,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-gray-800 py-8 sm:py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Redes Sociales */}
+        {/* Redes Sociales - CORREGIDO */}
         <div className="flex justify-center space-x-6 mb-6">
           {socialNetworks.map((social, index) => (
             <a
@@ -19,12 +18,13 @@ export default function Footer() {
               className={`w-10 h-10 flex items-center justify-center ${social.bgColor} rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg`}
               title={social.name}
             >
+              {/* Usar etiqueta img con width y height explícitos */}
               <img
                 src={social.icon}
                 alt={social.name}
                 width={20}
                 height={20}
-                className=""
+                className="max-w-full max-h-full"
               />
             </a>
           ))}

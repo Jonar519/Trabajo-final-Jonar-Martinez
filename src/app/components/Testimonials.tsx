@@ -48,11 +48,12 @@ export default function Testimonials() {
           </div>
 
           <div className="relative">
-            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">"</div>
+            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">&ldquo;</div>
+            {/* CORREGIDO: Comillas escapadas */}
             <p className="text-gray-200 text-lg sm:text-xl leading-relaxed text-center italic relative z-10">
-              {testimonials.testimonials[activeTestimonio].text}
+              &ldquo;{testimonials.testimonials[activeTestimonio].text}&rdquo;
             </p>
-            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">"</div>
+            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">&rdquo;</div>
           </div>
         </div>
 
