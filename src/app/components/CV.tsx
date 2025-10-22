@@ -1,64 +1,9 @@
 import Image from "next/image";
+import { useContent } from "@/hooks/useContent";
 
 export default function CV() {
-  const skills = [
-    { name: "React", level: 90 },
-    { name: "Next.js", level: 85 },
-    { name: "TypeScript", level: 80 },
-    { name: "Tailwind CSS", level: 95 },
-    { name: "Node.js", level: 75 },
-    { name: "Python", level: 70 },
-  ];
-
-  const education = [
-    { degree: "Ingeniería de Software", institution: "Universidad XYZ", year: "2022-2026" },
-    { degree: "Curso Avanzado React", institution: "Platzi", year: "2023" },
-    { degree: "Certificación AWS", institution: "Amazon Web Services", year: "2024" },
-  ];
-
-  const languages = [
-    { language: "Español", level: "Nativo" },
-    { language: "Inglés", level: "Avanzado (B2)" },
-  ];
-
-  const socialNetworks = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/",
-      icon: "/linkedin-icon.svg",
-      bgColor: "bg-gray-900",
-      borderColor: "border-blue-500",
-      glowColor: "shadow-[0_0_15px_rgba(59,130,246,0.7)]",
-      iconColor: "filter brightness-0 invert" // Blanco para contraste
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/jonar_andres/",
-      icon: "/instagram-icon.svg", 
-      bgColor: "bg-gray-900",
-      borderColor: "border-pink-500",
-      glowColor: "shadow-[0_0_15px_rgba(236,72,153,0.7)]",
-      iconColor: "filter brightness-0 invert"
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/Jonar519",
-      icon: "/github-icon.svg",
-      bgColor: "bg-gray-900",
-      borderColor: "border-green-500",
-      glowColor: "shadow-[0_0_15px_rgba(34,197,94,0.7)]",
-      iconColor: "filter brightness-0 invert"
-    },
-    {
-      name: "Vercel",
-      url: "https://vercel.com/chitivanets-projects",
-      icon: "/vercel-icon.svg",
-      bgColor: "bg-gray-900",
-      borderColor: "border-purple-500",
-      glowColor: "shadow-[0_0_15px_rgba(168,85,247,0.7)]",
-      iconColor: "filter brightness-0 invert"
-    }
-  ];
+  const { content } = useContent();
+  const { cv, socialNetworks } = content;
 
   const downloadCV = () => {
     const link = document.createElement('a');
@@ -72,7 +17,7 @@ export default function CV() {
   return (
     <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-12">
-        CV / Hoja de Vida
+        {cv.title}
       </h2>
       
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
@@ -86,8 +31,8 @@ export default function CV() {
               height={120}
               className="rounded-full border-4 border-indigo-400 mx-auto mb-4 shadow-[0_0_20px_rgba(99,102,241,0.5)]"
             />
-            <h3 className="text-xl font-bold text-white">Jonar Andrés</h3>
-            <p className="text-indigo-300">Desarrollador Full Stack</p>
+            <h3 className="text-xl font-bold text-white">{content.site.author}</h3>
+            <p className="text-indigo-300">{cv.position}</p>
           </div>
 
           <div className="space-y-6">
@@ -96,9 +41,9 @@ export default function CV() {
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="text-cyan-400">📧</span> Contacto
               </h4>
-              <p className="text-gray-300 text-sm mb-2">jonarmartinez519@gmail.com</p>
-              <p className="text-gray-300 text-sm mb-2">+57 3127796502</p>
-              <p className="text-gray-300 text-sm">Ciudad, Pasto - Nariño</p>
+              <p className="text-gray-300 text-sm mb-2">{content.site.email}</p>
+              <p className="text-gray-300 text-sm mb-2">{content.site.phone}</p>
+              <p className="text-gray-300 text-sm">{content.site.location}</p>
             </div>
 
             {/* Redes Sociales */}
@@ -113,13 +58,13 @@ export default function CV() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex flex-col items-center p-3 rounded-lg ${social.bgColor} ${social.borderColor} border-2 ${social.glowColor} transition-all duration-300 hover:scale-105 hover:shadow-lg hover:${social.glowColor.replace('0.7', '1')}`}
+                    className={`flex flex-col items-center p-3 rounded-lg ${social.bgColor} ${social.borderColor} border-2 ${social.glowColor} transition-all duration-300 hover:scale-105 hover:shadow-lg`}
                   >
                     <div className="w-8 h-8 mb-2 flex items-center justify-center">
                       <img 
                         src={social.icon} 
                         alt={social.name}
-                        className="w-6 h-6 ${social.iconColor}"
+                        className={`w-6 h-6`}
                       />
                     </div>
                     <span className="text-xs text-center text-white font-medium">
@@ -135,7 +80,7 @@ export default function CV() {
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                 <span className="text-cyan-400">🗣️</span> Idiomas
               </h4>
-              {languages.map((lang, index) => (
+              {cv.languages.map((lang, index) => (
                 <div key={index} className="mb-2">
                   <p className="text-gray-300 text-sm font-medium">{lang.language}</p>
                   <p className="text-cyan-400 text-xs">{lang.level}</p>
@@ -153,7 +98,7 @@ export default function CV() {
               <span className="text-cyan-400">⚡</span> Habilidades Técnicas
             </h3>
             <div className="space-y-4">
-              {skills.map((skill, index) => (
+              {cv.skills.map((skill, index) => (
                 <div key={index}>
                   <div className="flex justify-between mb-1">
                     <span className="text-white text-sm font-medium">{skill.name}</span>
@@ -176,7 +121,7 @@ export default function CV() {
               <span className="text-purple-400">🎓</span> Educación
             </h3>
             <div className="space-y-4">
-              {education.map((edu, index) => (
+              {cv.education.map((edu, index) => (
                 <div key={index} className="border-l-4 border-purple-400 pl-4 hover:border-l-cyan-400 transition-all duration-300">
                   <h4 className="text-white font-semibold text-lg">{edu.degree}</h4>
                   <p className="text-gray-300 text-sm">{edu.institution}</p>
@@ -195,7 +140,7 @@ export default function CV() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              📄 Descargar CV PDF
+              {cv.downloadButton}
             </button>
           </div>
         </div>

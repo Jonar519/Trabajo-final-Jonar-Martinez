@@ -1,32 +1,9 @@
 import Image from "next/image";
+import { useContent } from "@/hooks/useContent";
 
 export default function Footer() {
-  const socialNetworks = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/",
-      icon: "/linkedin-icon.svg",
-      bgColor: "bg-white border border-blue-500"
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/jonar_andres/",
-      icon: "/instagram-icon.svg",
-      bgColor: "bg-white border border-pink-500"
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/Jonar519",
-      icon: "/github-icon.svg",
-      bgColor: "bg-white border border-gray-800"
-    },
-    {
-      name: "Vercel",
-      url: "https://vercel.com/chitivanets-projects",
-      icon: "/vercel-icon.svg",
-      bgColor: "bg-white border border-black"
-    }
-  ];
+  const { content } = useContent();
+  const { socialNetworks, footer } = content;
 
   return (
     <footer className="bg-black border-t border-gray-800 py-8 sm:py-10">
@@ -47,7 +24,7 @@ export default function Footer() {
                 alt={social.name}
                 width={20}
                 height={20}
-                className="" // Sin filtros
+                className=""
               />
             </a>
           ))}
@@ -55,8 +32,8 @@ export default function Footer() {
         
         {/* Texto del footer */}
         <div className="text-center text-gray-500 text-xs sm:text-sm">
-          <p>© 2025 Jonar Andrés | Estilo Gamer-Tech ⚡ Inspirado en Samsung</p>
-          <p className="mt-2 text-gray-600">Desarrollado con Next.js y Tailwind CSS</p>
+          <p>{footer.copyright}</p>
+          <p className="mt-2 text-gray-600">{footer.developedWith}</p>
         </div>
       </div>
     </footer>

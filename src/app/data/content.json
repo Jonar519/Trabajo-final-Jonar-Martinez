@@ -1,0 +1,362 @@
+{
+  "site": {
+    "title": "Mi Portafolio",
+    "author": "Jonar Andrés",
+    "description": "Estudiante de Ingeniería de Software | Desarrollador Full Stack",
+    "email": "jonarmartinez519@gmail.com",
+    "phone": "+57 3127796502",
+    "location": "Ciudad, Pasto - Nariño"
+  },
+  
+  "navigation": {
+    "sections": ["INICIO", "ACERCA", "CV", "EXPERIENCIA", "PROYECTOS", "TESTIMONIOS", "EXTRA", "CONTACTO"]
+  },
+
+  "hero": {
+    "title": "Bienvenido a mi Portafolio",
+    "description": "Estudiante de Ingeniería de Software | Apasionado por el desarrollo web, el diseño de interfaces y la innovación tecnológica ⚡",
+    "status": "Disponible para proyectos",
+    "projectsCompleted": "+5 Proyectos completados",
+    "ctaButton": "📄 Ver mi CV"
+  },
+
+  "about": {
+    "title": "Acerca de mí",
+    "content": "Soy un estudiante de **Ingeniería de Software** con gran interés en el desarrollo de aplicaciones web, diseño UX/UI y tecnologías modernas como **React, Next.js y Tailwind CSS**. Me encanta crear proyectos que mezclen creatividad, funcionalidad y estilo gamer.",
+    "stats": [
+      {
+        "value": "+5",
+        "label": "Proyectos Completados",
+        "color": "green"
+      },
+      {
+        "value": "2+", 
+        "label": "Años de Prácticas",
+        "color": "cyan"
+      }
+    ],
+    "focus": {
+      "title": "🎯 Mi Enfoque",
+      "content": "Me especializo en crear experiencias digitales modernas y responsivas, combinando las mejores prácticas de desarrollo con diseños innovadores que cautiven a los usuarios."
+    },
+    "buttons": [
+      {
+        "text": "🚀 Ver Proyectos",
+        "action": "proyectos",
+        "type": "primary"
+      },
+      {
+        "text": "💬 Contactar", 
+        "action": "contacto",
+        "type": "secondary"
+      }
+    ]
+  },
+
+  "cv": {
+    "title": "CV / Hoja de Vida",
+    "position": "Desarrollador Full Stack",
+    
+    "skills": [
+      { "name": "React", "level": 90 },
+      { "name": "Next.js", "level": 85 },
+      { "name": "TypeScript", "level": 80 },
+      { "name": "Tailwind CSS", "level": 95 },
+      { "name": "Node.js", "level": 75 },
+      { "name": "Python", "level": 70 }
+    ],
+
+    "education": [
+      {
+        "degree": "Ingeniería de Software",
+        "institution": "Universidad XYZ", 
+        "year": "2022-2026"
+      },
+      {
+        "degree": "Curso Avanzado React",
+        "institution": "Platzi",
+        "year": "2023"
+      },
+      {
+        "degree": "Certificación AWS", 
+        "institution": "Amazon Web Services",
+        "year": "2024"
+      }
+    ],
+
+    "languages": [
+      { "language": "Español", "level": "Nativo" },
+      { "language": "Inglés", "level": "Avanzado (B2)" }
+    ],
+
+    "downloadButton": "📄 Descargar CV PDF"
+  },
+
+  "experience": {
+    "title": "Mi Trayectoria",
+    "experiences": [
+      {
+        "title": "Desarrollador Full Stack",
+        "company": "Empresa Tech Innovadora", 
+        "period": "2024 - Presente",
+        "description": "Desarrollo de aplicaciones web modernas con tecnologías de vanguardia.",
+        "achievements": [
+          "Lideré el desarrollo de 3 proyectos",
+          "Mejoré performance en 40%", 
+          "Implementé CI/CD"
+        ]
+      },
+      {
+        "title": "Practicante en Desarrollo Web",
+        "company": "Startup Digital",
+        "period": "2023 - 2024",
+        "description": "Enfoque en desarrollo frontend y experiencia de usuario.", 
+        "achievements": [
+          "Desarrollé 10+ componentes",
+          "Optimicé carga de sitios",
+          "Colaboré en equipo ágil"
+        ]
+      },
+      {
+        "title": "Estudiante Universitario",
+        "company": "Universidad XYZ",
+        "period": "2022 - 2026", 
+        "description": "Formación integral en ingeniería de software y tecnologías.",
+        "achievements": [
+          "Promedio 4.5/5.0",
+          "Proyectos destacados", 
+          "Participación en hackathons"
+        ]
+      }
+    ]
+  },
+
+  "projects": {
+    "title": "Mis Proyectos",
+    "description": "Explora mis proyectos reales desarrollados con las últimas tecnologías. ¡Haz clic para visitarlos!",
+    "projects": [
+      {
+        "id": 1,
+        "title": "Portafolio Personal",
+        "description": "Mi portafolio personal desarrollado con Next.js, Tailwind CSS y TypeScript. Diseño moderno y responsive con temática gamer-tech.",
+        "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+        "image": "/proyecto1.jpg",
+        "demoUrl": "https://example-portfolio-bay.vercel.app/es", 
+        "codeUrl": "https://github.com/Jonar519/example-portfolio",
+        "category": "Frontend"
+      },
+      {
+        "id": 2,
+        "title": "Diseño Responsive",
+        "description": "Sitio web con diseño completamente responsive, implementando mejores prácticas de CSS Grid, Flexbox y diseño adaptable.",
+        "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+        "image": "/proyecto2.jpg",
+        "demoUrl": "https://responsive-design-6xpt.vercel.app/",
+        "codeUrl": "https://github.com/Jonar519/responsive-design", 
+        "category": "Frontend"
+      },
+      {
+        "id": 3,
+        "title": "Trabajo Académico",
+        "description": "Proyecto académico desarrollado como parte de mi formación, implementando conceptos avanzados de desarrollo web.",
+        "technologies": ["HTML5", "CSS3", "JavaScript", "Vercel"],
+        "image": "/proyecto3.jpg", 
+        "demoUrl": "https://trabajo-1-momento-2.vercel.app/",
+        "codeUrl": "https://github.com/Jonar519/Trabajo-1-momento-2",
+        "category": "Académico"
+      },
+      {
+        "id": 4,
+        "title": "Sistema de Boletos", 
+        "description": "Aplicación web para gestión de boletos o tickets, con interfaz intuitiva y funcionalidades de gestión.",
+        "technologies": ["React", "CSS3", "JavaScript", "Vercel"],
+        "image": "/proyecto4.jpg",
+        "demoUrl": "https://boleto-eight.vercel.app/",
+        "codeUrl": "https://github.com/Jonar519/boleto",
+        "category": "Full Stack" 
+      },
+      {
+        "id": 5,
+        "title": "Diseño de Interfaces",
+        "description": "Trabajo académico enfocado en diseño de interfaces de usuario, aplicando principios de UX/UI y usabilidad.",
+        "technologies": ["Figma", "UI/UX", "Design System", "Prototyping"],
+        "image": "/proyecto5.jpg",
+        "demoUrl": "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
+        "codeUrl": "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
+        "category": "UI/UX Design"
+      }
+    ]
+  },
+
+  "testimonials": {
+    "title": "Testimonios",
+    "description": "Experiencias reales de colaboración 🤝",
+    "testimonials": [
+      {
+        "id": 1,
+        "name": "Persona 1",
+        "role": "CEO en Empresa Tech",
+        "image": "/testimonio1.jpg",
+        "text": "El trabajo refleja profesionalismo, innovación y un estilo único. Muy recomendable.",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "name": "Persona 2", 
+        "role": "Líder de Proyecto",
+        "image": "/testimonio2.jpg",
+        "text": "Excelente desarrollador, siempre entrega calidad y cumple con los plazos establecidos.",
+        "rating": 5
+      },
+      {
+        "id": 3,
+        "name": "Persona 3",
+        "role": "Cliente Freelance",
+        "image": "/testimonio3.jpg",
+        "text": "Superó todas mis expectativas. El proyecto quedó mejor de lo que imaginaba.",
+        "rating": 5
+      },
+      {
+        "id": 4,
+        "name": "Persona 4",
+        "role": "Colega Desarrollador",
+        "image": "/testimonio4.jpg",
+        "text": "Gran compañero de equipo, siempre dispuesto a ayudar y compartir conocimiento.",
+        "rating": 5
+      }
+    ]
+  },
+
+  "achievements": {
+    "title": "Logros Personales", 
+    "description": "Mi journey de desarrollo - Cada logro es un nivel superado en mi carrera profesional 🎮",
+    "achievements": [
+      {
+        "id": 1,
+        "title": "Hackathon Champion",
+        "description": "Primer lugar en competencia de desarrollo con proyecto innovador",
+        "icon": "🏆",
+        "level": "Legendario",
+        "progress": 100,
+        "category": "Competencias", 
+        "date": "2024"
+      },
+      {
+        "id": 2,
+        "title": "Open Source Contributor",
+        "description": "Contribuciones significativas a proyectos open source en GitHub",
+        "icon": "🚀",
+        "level": "Épico", 
+        "progress": 85,
+        "category": "Comunidad",
+        "date": "2023-2024"
+      },
+      {
+        "id": 3,
+        "title": "Tech Stack Master",
+        "description": "Dominio de stack completo: Frontend, Backend y DevOps", 
+        "icon": "⚡",
+        "level": "Raro",
+        "progress": 90,
+        "category": "Habilidades",
+        "date": "2024"
+      },
+      {
+        "id": 4,
+        "title": "Project Deployer",
+        "description": "Más de 10 proyectos desplegados y funcionando en producción",
+        "icon": "🌐", 
+        "level": "Épico",
+        "progress": 100,
+        "category": "Despliegue",
+        "date": "2023-2024"
+      },
+      {
+        "id": 5,
+        "title": "Code Mentor", 
+        "description": "Mentoría a desarrolladores junior en la comunidad tech",
+        "icon": "👨‍💻",
+        "level": "Raro",
+        "progress": 75,
+        "category": "Liderazgo",
+        "date": "2024" 
+      },
+      {
+        "id": 6,
+        "title": "Bug Hunter",
+        "description": "Identificación y solución de bugs críticos en proyectos",
+        "icon": "🔍",
+        "level": "Común",
+        "progress": 100,
+        "category": "Calidad",
+        "date": "2024"
+      }
+    ],
+    "summary": {
+      "total": "6",
+      "committed": "100%"
+    }
+  },
+
+  "contact": {
+    "title": "¡Trabajemos Juntos!",
+    "description": "¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad ⚡",
+    "formTitle": "📧 Envíame un Mensaje",
+    "successMessage": "✅ ¡Mensaje enviado con éxito! Te contactaré pronto.",
+    "fields": {
+      "name": "Nombre *",
+      "email": "Email *", 
+      "subject": "Asunto *",
+      "message": "Mensaje *"
+    },
+    "placeholders": {
+      "name": "Tu nombre",
+      "email": "tu@email.com",
+      "subject": "¿En qué puedo ayudarte?",
+      "message": "Cuéntame sobre tu proyecto..."
+    },
+    "submitButton": "🚀 Enviar Mensaje",
+    "submittingText": "Enviando...",
+    "directContact": "¿Prefieres contactarme directamente?"
+  },
+
+"socialNetworks": [
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/",
+    "icon": "/linkedin-icon.svg",
+    "bgColor": "bg-gray-900",
+    "borderColor": "border-blue-500",
+    "glowColor": "shadow-[0_0_15px_rgba(59,130,246,0.7)]"
+  },
+  {
+    "name": "Instagram",
+    "url": "https://www.instagram.com/jonar_andres/", 
+    "icon": "/instagram-icon.svg",
+    "bgColor": "bg-gray-900",
+    "borderColor": "border-pink-500",
+    "glowColor": "shadow-[0_0_15px_rgba(236,72,153,0.7)]"
+  },
+  {
+    "name": "GitHub",
+    "url": "https://github.com/Jonar519",
+    "icon": "/github-icon.svg", 
+    "bgColor": "bg-gray-900",
+    "borderColor": "border-green-500",
+    "glowColor": "shadow-[0_0_15px_rgba(34,197,94,0.7)]"
+  },
+  {
+    "name": "Vercel",
+    "url": "https://vercel.com/chitivanets-projects",
+    "icon": "/vercel-icon.svg",
+    "bgColor": "bg-gray-900",
+    "borderColor": "border-purple-500", 
+    "glowColor": "shadow-[0_0_15px_rgba(168,85,247,0.7)]"
+  }
+],
+
+  "footer": {
+    "copyright": "© 2025 Jonar Andrés | Estilo Gamer-Tech ⚡ Inspirado en Samsung",
+    "developedWith": "Desarrollado con Next.js y Tailwind CSS"
+  }
+}

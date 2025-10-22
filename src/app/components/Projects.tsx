@@ -2,72 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useContent } from "@/hooks/useContent";
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState(0);
-
-  const proyectos = [
-    {
-      id: 1,
-      title: "Portafolio Personal",
-      description: "Mi portafolio personal desarrollado con Next.js, Tailwind CSS y TypeScript. Diseño moderno y responsive con temática gamer-tech.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-      image: "/proyecto1.jpg",
-      demoUrl: "https://example-portfolio-bay.vercel.app/es",
-      codeUrl: "https://github.com/Jonar519/example-portfolio",
-      category: "Frontend"
-    },
-    {
-      id: 2,
-      title: "Diseño Responsive",
-      description: "Sitio web con diseño completamente responsive, implementando mejores prácticas de CSS Grid, Flexbox y diseño adaptable.",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-      image: "/proyecto2.jpg",
-      demoUrl: "https://responsive-design-6xpt.vercel.app/",
-      codeUrl: "https://github.com/Jonar519/responsive-design",
-      category: "Frontend"
-    },
-    {
-      id: 3,
-      title: "Trabajo Académico",
-      description: "Proyecto académico desarrollado como parte de mi formación, implementando conceptos avanzados de desarrollo web.",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Vercel"],
-      image: "/proyecto3.jpg",
-      demoUrl: "https://trabajo-1-momento-2.vercel.app/",
-      codeUrl: "https://github.com/Jonar519/Trabajo-1-momento-2",
-      category: "Académico"
-    },
-    {
-      id: 4,
-      title: "Sistema de Boletos",
-      description: "Aplicación web para gestión de boletos o tickets, con interfaz intuitiva y funcionalidades de gestión.",
-      technologies: ["React", "CSS3", "JavaScript", "Vercel"],
-      image: "/proyecto4.jpg",
-      demoUrl: "https://boleto-eight.vercel.app/",
-      codeUrl: "https://github.com/Jonar519/boleto",
-      category: "Full Stack"
-    },
-    {
-      id: 5,
-      title: "Diseño de Interfaces",
-      description: "Trabajo académico enfocado en diseño de interfaces de usuario, aplicando principios de UX/UI y usabilidad.",
-      technologies: ["Figma", "UI/UX", "Design System", "Prototyping"],
-      image: "/proyecto5.jpg",
-      demoUrl: "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
-      codeUrl: "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
-      category: "UI/UX Design"
-    }
-  ];
+  const { content } = useContent();
+  const { projects } = content;
 
   // Crear array extendido para el efecto infinito
-  const extendedProyectos = [...proyectos, ...proyectos, ...proyectos];
+  const extendedProyectos = [...projects.projects, ...projects.projects, ...projects.projects];
 
   const nextProject = () => {
     setActiveProject((prev) => {
       const nextIndex = prev + 1;
-      // Si llega al final del array extendido, volver al punto medio
-      if (nextIndex >= proyectos.length * 2) {
-        return proyectos.length;
+      if (nextIndex >= projects.projects.length * 2) {
+        return projects.projects.length;
       }
       return nextIndex;
     });
@@ -76,37 +25,36 @@ export default function Projects() {
   const prevProject = () => {
     setActiveProject((prev) => {
       const prevIndex = prev - 1;
-      // Si va antes del inicio del array extendido, ir al punto medio
       if (prevIndex < 0) {
-        return proyectos.length - 1;
+        return projects.projects.length - 1;
       }
       return prevIndex;
     });
   };
 
-  const goToProject = (index: number) => {
-    setActiveProject(index + proyectos.length);
+  const goToProject = (index) => {
+    setActiveProject(index + projects.projects.length);
   };
 
   // Efecto para resetear suavemente cuando llegue a los extremos
   useEffect(() => {
-    if (activeProject >= proyectos.length * 2) {
+    if (activeProject >= projects.projects.length * 2) {
       const timer = setTimeout(() => {
-        setActiveProject(proyectos.length);
+        setActiveProject(projects.projects.length);
       }, 50);
       return () => clearTimeout(timer);
     }
     if (activeProject < 0) {
       const timer = setTimeout(() => {
-        setActiveProject(proyectos.length - 1);
+        setActiveProject(projects.projects.length - 1);
       }, 50);
       return () => clearTimeout(timer);
     }
-  }, [activeProject, proyectos.length]);
+  }, [activeProject, projects.projects.length]);
 
   // Calcular el índice real para mostrar la información correcta
-  const getRealIndex = (index: number) => {
-    return index % proyectos.length;
+  const getRealIndex = (index) => {
+    return index % projects.projects.length;
   };
 
   return (
@@ -115,10 +63,10 @@ export default function Projects() {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20"></div>
       
       <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 relative z-10">
-        Mis Proyectos
+        {projects.title}
       </h2>
       <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto relative z-10">
-        Explora mis proyectos reales desarrollados con las últimas tecnologías. ¡Haz clic para visitarlos!
+        {projects.description}
       </p>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -156,10 +104,11 @@ export default function Projects() {
               }
 
               const realIndex = getRealIndex(index);
+              const realProject = projects.projects[realIndex];
 
               return (
                 <div
-                  key={`${proyecto.id}-${index}`}
+                  key={`${realProject.id}-${index}`}
                   className={`absolute w-80 transition-all duration-500 ease-in-out ${
                     isActive ? "cursor-default" : "cursor-pointer"
                   }`}
@@ -178,28 +127,28 @@ export default function Projects() {
                     {/* Imagen del proyecto */}
                     <div className="relative h-48 bg-gradient-to-r from-purple-500 to-pink-500">
                       <Image
-                        src={proyectos[realIndex].image}
-                        alt={proyectos[realIndex].title}
+                        src={realProject.image}
+                        alt={realProject.title}
                         fill
                         className="object-cover"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-black/80 text-purple-300 text-xs rounded-full border border-purple-500">
-                          {proyectos[realIndex].category}
+                          {realProject.category}
                         </span>
                       </div>
                     </div>
 
                     {/* Contenido */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">{proyectos[realIndex].title}</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">{realProject.title}</h3>
                       <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                        {proyectos[realIndex].description}
+                        {realProject.description}
                       </p>
 
                       {/* Tecnologías */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {proyectos[realIndex].technologies.map((tech, techIndex) => (
+                        {realProject.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
                             className="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded border border-purple-500/30"
@@ -213,7 +162,7 @@ export default function Projects() {
                       {isActive && (
                         <div className="flex gap-3">
                           <a
-                            href={proyectos[realIndex].demoUrl}
+                            href={realProject.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-sm font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
@@ -221,7 +170,7 @@ export default function Projects() {
                             <span>🌐</span> Ver Demo
                           </a>
                           <a
-                            href={proyectos[realIndex].codeUrl}
+                            href={realProject.codeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-sm font-semibold hover:bg-purple-500/10 transition-colors flex items-center justify-center gap-2"
@@ -252,9 +201,9 @@ export default function Projects() {
           </button>
         </div>
 
-        {/* Indicadores - Usando el array original */}
+        {/* Indicadores */}
         <div className="flex justify-center gap-3 mt-8">
-          {proyectos.map((_, index) => (
+          {projects.projects.map((_, index) => (
             <button
               key={index}
               onClick={() => goToProject(index)}
@@ -267,14 +216,11 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Contador e instrucciones */}
+        {/* Contador */}
         <div className="text-center mt-4 space-y-2">
           <span className="text-purple-300 text-sm block">
-            {getRealIndex(activeProject) + 1} / {proyectos.length}
+            {getRealIndex(activeProject) + 1} / {projects.projects.length}
           </span>
-          <p className="text-gray-500 text-xs">
-         
-          </p>
         </div>
       </div>
     </section>

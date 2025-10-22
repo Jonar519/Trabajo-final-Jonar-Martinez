@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useContent } from "@/hooks/useContent";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,14 +13,17 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { content } = useContent();
+  const { contact, socialNetworks } = content;
+
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -37,22 +41,22 @@ export default function Contact() {
   return (
     <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent mb-4">
-        ¡Trabajemos Juntos!
+        {contact.title}
       </h2>
       <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-        ¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad ⚡
+        {contact.description}
       </p>
 
       <div className="max-w-2xl mx-auto">
         {/* Formulario */}
         <div className="bg-gray-900/50 border-2 border-pink-500 rounded-2xl p-8 shadow-[0_0_40px_rgba(236,72,153,0.3)] backdrop-blur-sm">
           <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3 justify-center">
-            <span className="text-pink-400">📧</span> Envíame un Mensaje
+            {contact.formTitle}
           </h3>
 
           {isSubmitted && (
             <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-400 text-center">
-              ✅ ¡Mensaje enviado con éxito! Te contactaré pronto.
+              {contact.successMessage}
             </div>
           )}
 
@@ -60,7 +64,7 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="name" className="block text-white text-sm font-medium mb-2">
-                  Nombre *
+                  {contact.fields.name}
                 </label>
                 <input
                   type="text"
@@ -70,12 +74,12 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300"
-                  placeholder="Tu nombre"
+                  placeholder={contact.placeholders.name}
                 />
               </div>
               <div>
                 <label htmlFor="email" className="block text-white text-sm font-medium mb-2">
-                  Email *
+                  {contact.fields.email}
                 </label>
                 <input
                   type="email"
@@ -85,14 +89,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300"
-                  placeholder="tu@email.com"
+                  placeholder={contact.placeholders.email}
                 />
               </div>
             </div>
 
             <div>
               <label htmlFor="subject" className="block text-white text-sm font-medium mb-2">
-                Asunto *
+                {contact.fields.subject}
               </label>
               <input
                 type="text"
@@ -102,13 +106,13 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300"
-                placeholder="¿En qué puedo ayudarte?"
+                placeholder={contact.placeholders.subject}
               />
             </div>
 
             <div>
               <label htmlFor="message" className="block text-white text-sm font-medium mb-2">
-                Mensaje *
+                {contact.fields.message}
               </label>
               <textarea
                 id="message"
@@ -118,7 +122,7 @@ export default function Contact() {
                 required
                 rows={6}
                 className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white resize-none transition-all duration-300"
-                placeholder="Cuéntame sobre tu proyecto..."
+                placeholder={contact.placeholders.message}
               />
             </div>
 
@@ -130,11 +134,11 @@ export default function Contact() {
               {isSubmitting ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Enviando...
+                  {contact.submittingText}
                 </>
               ) : (
                 <>
-                  <span>🚀</span> Enviar Mensaje
+                  {contact.submitButton}
                 </>
               )}
             </button>
@@ -144,17 +148,17 @@ export default function Contact() {
           <div className="mt-8 pt-8 border-t border-gray-700">
             <div className="text-center">
               <p className="text-gray-400 text-sm mb-4">
-                ¿Prefieres contactarme directamente?
+                {contact.directContact}
               </p>
               <div className="flex justify-center gap-6">
                 <a
-                  href="mailto:tu.email@ejemplo.com"
+                  href={`mailto:${content.site.email}`}
                   className="text-pink-400 hover:text-pink-300 transition-colors text-sm flex items-center gap-2"
                 >
                   <span>📧</span> Email
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/"
+                  href={socialNetworks.find(s => s.name === "LinkedIn")?.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-pink-400 hover:text-pink-300 transition-colors text-sm flex items-center gap-2"
