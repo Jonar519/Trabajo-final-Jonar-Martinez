@@ -42,7 +42,7 @@ export default function Achievements() {
             {/* Barra de progreso */}
             <div className="mb-3">
               <div className="flex justify-between text-xs text-gray-400 mb-1">
-                <span>Progreso</span>
+                <span>{achievements.summary.labels.progress}</span>
                 <span>{achievement.progress}%</span>
               </div>
               <div className="w-full bg-gray-700 rounded-full h-2">
@@ -66,11 +66,11 @@ export default function Achievements() {
       <div className="max-w-2xl mx-auto mt-12 grid grid-cols-2 gap-4">
         <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-cyan-500/30">
           <div className="text-xl font-bold text-cyan-400">{achievements.summary.total}</div>
-          <div className="text-gray-400 text-sm">Logros Totales</div>
+          <div className="text-gray-400 text-sm">{achievements.summary.labels.totalAchievements}</div>
         </div>
         <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-green-500/30">
           <div className="text-xl font-bold text-green-400">{achievements.summary.committed}</div>
-          <div className="text-gray-400 text-sm">Comprometido</div>
+          <div className="text-gray-400 text-sm">{achievements.summary.labels.committed}</div>
         </div>
       </div>
     </section>

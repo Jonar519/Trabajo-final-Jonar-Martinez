@@ -14,6 +14,44 @@ export default function CV() {
     document.body.removeChild(link);
   };
 
+  const getLevelColor = (level: string) => {
+    switch (level) {
+      case "Experto":
+      case "Expert":
+        return "from-green-400 to-emerald-500";
+      case "Avanzado":
+      case "Advanced":
+        return "from-blue-400 to-cyan-500";
+      case "Intermedio":
+      case "Intermediate":
+        return "from-yellow-400 to-amber-500";
+      case "Básico":
+      case "Basic":
+        return "from-gray-400 to-gray-600";
+      default:
+        return "from-gray-500 to-gray-700";
+    }
+  };
+
+  const getLevelIcon = (level: string) => {
+    switch (level) {
+      case "Experto":
+      case "Expert":
+        return "🚀";
+      case "Avanzado":
+      case "Advanced":
+        return "⚡";
+      case "Intermedio":
+      case "Intermediate":
+        return "🔷";
+      case "Básico":
+      case "Basic":
+        return "🔶";
+      default:
+        return "⚪";
+    }
+  };
+
   return (
     <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-12">
@@ -39,7 +77,7 @@ export default function CV() {
             {/* Contacto */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="text-cyan-400">📧</span> Contacto
+                <span className="text-cyan-400">📧</span> {cv.sections.contact}
               </h4>
               <p className="text-gray-300 text-sm mb-2">{content.site.email}</p>
               <p className="text-gray-300 text-sm mb-2">{content.site.phone}</p>
@@ -49,7 +87,7 @@ export default function CV() {
             {/* Redes Sociales */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="text-cyan-400">🌐</span> Redes Sociales
+                <span className="text-cyan-400">🌐</span> {cv.sections.socialNetworks}
               </h4>
               <div className="grid grid-cols-2 gap-3">
                 {socialNetworks.map((social, index) => (
@@ -64,7 +102,7 @@ export default function CV() {
                       <img 
                         src={social.icon} 
                         alt={social.name}
-                        className={`w-6 h-6`}
+                        className="w-6 h-6"
                       />
                     </div>
                     <span className="text-xs text-center text-white font-medium">
@@ -78,7 +116,7 @@ export default function CV() {
             {/* Idiomas */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="text-cyan-400">🗣️</span> Idiomas
+                <span className="text-cyan-400">🗣️</span> {cv.sections.languages}
               </h4>
               {cv.languages.map((lang, index) => (
                 <div key={index} className="mb-2">
@@ -94,21 +132,26 @@ export default function CV() {
         <div className="md:col-span-2 space-y-8">
           {/* Habilidades Técnicas */}
           <div className="bg-gray-900/80 border border-cyan-500 rounded-xl p-6 shadow-[0_0_25px_rgba(34,211,238,0.3)] backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center gap-2">
-              <span className="text-cyan-400">⚡</span> Habilidades Técnicas
+            <h3 className="text-2xl font-bold text-cyan-300 mb-6 flex items-center gap-2">
+              <span className="text-cyan-400">⚡</span> {cv.sections.technicalSkills}
             </h3>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {cv.skills.map((skill, index) => (
-                <div key={index}>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-white text-sm font-medium">{skill.name}</span>
-                    <span className="text-cyan-300 text-sm">{skill.level}%</span>
+                <div 
+                  key={index}
+                  className="bg-gray-800/50 border border-cyan-500/30 rounded-lg p-4 hover:border-cyan-400 transition-all duration-300 group"
+                >
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-white font-semibold text-sm">{skill.name}</span>
+                    <span className="text-cyan-300 text-xs bg-cyan-500/20 px-2 py-1 rounded-full border border-cyan-500/30">
+                      {skill.category}
+                    </span>
                   </div>
-                  <div className="w-full bg-gray-700 rounded-full h-3 shadow-inner">
-                    <div 
-                      className="bg-gradient-to-r from-cyan-400 to-blue-500 h-3 rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">{getLevelIcon(skill.level)}</span>
+                    <span className={`text-xs font-medium bg-gradient-to-r ${getLevelColor(skill.level)} bg-clip-text text-transparent`}>
+                      {skill.level}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -118,7 +161,7 @@ export default function CV() {
           {/* Educación */}
           <div className="bg-gray-900/80 border border-purple-500 rounded-xl p-6 shadow-[0_0_25px_rgba(168,85,247,0.3)] backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center gap-2">
-              <span className="text-purple-400">🎓</span> Educación
+              <span className="text-purple-400">🎓</span> {cv.sections.education}
             </h3>
             <div className="space-y-4">
               {cv.education.map((edu, index) => (

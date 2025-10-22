@@ -1,6 +1,8 @@
 "use client";
 
-import content from '@/data/content.json';
+import { useLanguage } from './useLanguage';
+import contentES from '@/data/content.json';
+import contentEN from '@/data/content-en.json';
 
 // Definir tipos para el contenido
 export interface Site {
@@ -48,7 +50,8 @@ export interface CV {
   position: string;
   skills: Array<{
     name: string;
-    level: number;
+    level: string;
+    category: string;
   }>;
   education: Array<{
     degree: string;
@@ -60,6 +63,13 @@ export interface CV {
     level: string;
   }>;
   downloadButton: string;
+  sections: {
+    technicalSkills: string;
+    contact: string;
+    socialNetworks: string;
+    education: string;
+    languages: string;
+  };
 }
 
 export interface Experience {
@@ -71,6 +81,10 @@ export interface Experience {
     description: string;
     achievements: string[];
   }>;
+  navigation: {
+    previous: string;
+    next: string;
+  };
 }
 
 export interface Project {
@@ -88,6 +102,10 @@ export interface Projects {
   title: string;
   description: string;
   projects: Project[];
+  buttons: {
+    viewDemo: string;
+    repository: string;
+  };
 }
 
 export interface Testimonial {
@@ -101,6 +119,7 @@ export interface Testimonial {
 
 export interface Testimonials {
   title: string;
+  description: string;
   testimonials: Testimonial[];
 }
 
@@ -122,6 +141,11 @@ export interface Achievements {
   summary: {
     total: string;
     committed: string;
+    labels: {
+      totalAchievements: string;
+      committed: string;
+      progress: string;
+    };
   };
 }
 
@@ -154,7 +178,6 @@ export interface SocialNetwork {
   bgColor: string;
   borderColor: string;
   glowColor: string;
-  iconColor: string;
 }
 
 export interface Footer {
@@ -177,14 +200,11 @@ export interface Content {
   footer: Footer;
 }
 
-// En useContent.ts, actualiza la interfaz Testimonials:
-export interface Testimonials {
-  title: string;
-  description: string; // ← Agregar esta línea
-  testimonials: Testimonial[];
-}
-
 export const useContent = () => {
+  const { language } = useLanguage();
+  
+  const content = (language === 'es' ? contentES : contentEN) as Content;
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -193,39 +213,84 @@ export const useContent = () => {
   };
 
   const handleButtonAction = (action: string) => {
-    if (action === 'proyectos') {
-      scrollToSection('proyectos');
-    } else if (action === 'contacto') {
-      scrollToSection('contacto');
-    } else if (action === 'cv') {
-      scrollToSection('cv');
-    } else if (action === 'inicio') {
-      scrollToSection('inicio');
-    } else if (action === 'testimonios') {
-      scrollToSection('testimonios');
-    } else if (action === 'extra') {
-      scrollToSection('extra');
-    } else if (action === 'acerca') {
-      scrollToSection('acerca');
-    } else if (action === 'experiencia') {
-      scrollToSection('experiencia');
+    const sectionMap: { [key: string]: string } = {
+      // Español
+      'proyectos': 'proyectos',
+      'contacto': 'contacto',
+      'cv': 'cv',
+      'inicio': 'inicio',
+      'testimonios': 'testimonios',
+      'extra': 'extra',
+      'acerca': 'acerca',
+      'experiencia': 'experiencia',
+      // Inglés
+      'projects': 'proyectos',
+      'contact': 'contacto', 
+      'home': 'inicio',
+      'testimonials': 'testimonios',
+      'about': 'acerca',
+      'experience': 'experiencia'
+    };
+
+    const sectionId = sectionMap[action];
+    if (sectionId) {
+      scrollToSection(sectionId);
     }
+  };
+
+  // Función para obtener el ID de sección basado en el nombre y idioma
+  const getSectionId = (sectionName: string): string => {
+    const sectionMap: { [key: string]: string } = {
+      // Mapeo de nombres de sección a IDs
+      'INICIO': 'inicio',
+      'HOME': 'inicio',
+      'ACERCA': 'acerca', 
+      'ABOUT': 'acerca',
+      'CV': 'cv',
+      'EXPERIENCIA': 'experiencia',
+      'EXPERIENCE': 'experiencia',
+      'PROYECTOS': 'proyectos',
+      'PROJECTS': 'proyectos',
+      'TESTIMONIOS': 'testimonios',
+      'TESTIMONIALS': 'testimonios',
+      'EXTRA': 'extra',
+      'CONTACTO': 'contacto',
+      'CONTACT': 'contacto'
+    };
+    
+    return sectionMap[sectionName] || sectionName.toLowerCase();
   };
 
   const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Legendario": return "from-yellow-400 to-orange-500";
-      case "Épico": return "from-purple-500 to-pink-500";
-      case "Raro": return "from-blue-500 to-cyan-500";
-      case "Común": return "from-green-500 to-emerald-500";
-      default: return "from-gray-500 to-gray-700";
-    }
+    const levelMap: { [key: string]: string } = {
+      // Español
+      "Legendario": "from-yellow-400 to-orange-500",
+      "Épico": "from-purple-500 to-pink-500", 
+      "Raro": "from-blue-500 to-cyan-500",
+      "Común": "from-green-500 to-emerald-500",
+      // Inglés
+      "Legendary": "from-yellow-400 to-orange-500",
+      "Epic": "from-purple-500 to-pink-500",
+      "Rare": "from-blue-500 to-cyan-500", 
+      "Common": "from-green-500 to-emerald-500",
+      // Niveles de habilidades
+      "Experto": "from-green-400 to-emerald-500",
+      "Expert": "from-green-400 to-emerald-500",
+      "Avanzado": "from-blue-400 to-cyan-500",
+      "Advanced": "from-blue-400 to-cyan-500",
+      "Intermedio": "from-yellow-400 to-amber-500",
+      "Intermediate": "from-yellow-400 to-amber-500",
+      "Básico": "from-gray-400 to-gray-600",
+      "Basic": "from-gray-400 to-gray-600"
+    };
+    return levelMap[level] || "from-gray-500 to-gray-700";
   };
 
   return {
-    content: content as Content,
-    scrollToSection,
+    content,
+    scrollToSection, 
     handleButtonAction,
-    getLevelColor
+    getLevelColor,
+    getSectionId
   };
 };

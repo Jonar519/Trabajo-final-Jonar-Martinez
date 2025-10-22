@@ -32,7 +32,7 @@ export default function Projects() {
     });
   };
 
-  const goToProject = (index) => {
+  const goToProject = (index: number) => {
     setActiveProject(index + projects.projects.length);
   };
 
@@ -53,7 +53,7 @@ export default function Projects() {
   }, [activeProject, projects.projects.length]);
 
   // Calcular el índice real para mostrar la información correcta
-  const getRealIndex = (index) => {
+  const getRealIndex = (index: number) => {
     return index % projects.projects.length;
   };
 
@@ -167,7 +167,7 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-sm font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
                           >
-                            <span>🌐</span> Ver Demo
+                            <span>🌐</span> {projects.buttons.viewDemo}
                           </a>
                           <a
                             href={realProject.codeUrl}
@@ -175,7 +175,7 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-sm font-semibold hover:bg-purple-500/10 transition-colors flex items-center justify-center gap-2"
                           >
-                            <span>📂</span> Repositorio
+                            <span>📂</span> {projects.buttons.repository}
                           </a>
                         </div>
                       )}

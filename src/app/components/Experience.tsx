@@ -82,13 +82,13 @@ export default function Experience() {
             onClick={() => setActiveExperience(prev => prev === 0 ? experience.experiences.length - 1 : prev - 1)}
             className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all duration-300 hover:scale-105"
           >
-            ◀ Anterior
+            ◀ {experience.navigation.previous}
           </button>
           <button
             onClick={() => setActiveExperience(prev => (prev + 1) % experience.experiences.length)}
             className="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-all duration-300 hover:scale-105"
           >
-            Siguiente ▶
+            {experience.navigation.next} ▶
           </button>
         </div>
       </div>

@@ -58,12 +58,14 @@
     "position": "Desarrollador Full Stack",
     
     "skills": [
-      { "name": "React", "level": 90 },
-      { "name": "Next.js", "level": 85 },
-      { "name": "TypeScript", "level": 80 },
-      { "name": "Tailwind CSS", "level": 95 },
-      { "name": "Node.js", "level": 75 },
-      { "name": "Python", "level": 70 }
+      { "name": "React", "level": "Avanzado", "category": "Frontend" },
+      { "name": "Next.js", "level": "Avanzado", "category": "Frontend" },
+      { "name": "TypeScript", "level": "Intermedio", "category": "Lenguajes" },
+      { "name": "Tailwind CSS", "level": "Experto", "category": "Frontend" },
+      { "name": "Node.js", "level": "Intermedio", "category": "Backend" },
+      { "name": "Python", "level": "Intermedio", "category": "Lenguajes" },
+      { "name": "Git/GitHub", "level": "Avanzado", "category": "Herramientas" },
+      { "name": "Figma", "level": "Intermedio", "category": "Diseño" }
     ],
 
     "education": [
@@ -89,7 +91,15 @@
       { "language": "Inglés", "level": "Avanzado (B2)" }
     ],
 
-    "downloadButton": "📄 Descargar CV PDF"
+    "downloadButton": "📄 Descargar CV PDF",
+    
+    "sections": {
+      "technicalSkills": "Habilidades Técnicas",
+      "contact": "Contacto", 
+      "socialNetworks": "Redes Sociales",
+      "education": "Educación",
+      "languages": "Idiomas"
+    }
   },
 
   "experience": {
@@ -128,7 +138,12 @@
           "Participación en hackathons"
         ]
       }
-    ]
+    ],
+    
+    "navigation": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
   },
 
   "projects": {
@@ -185,7 +200,12 @@
         "codeUrl": "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
         "category": "UI/UX Design"
       }
-    ]
+    ],
+    
+    "buttons": {
+      "viewDemo": "Ver Demo",
+      "repository": "Repositorio"
+    }
   },
 
   "testimonials": {
@@ -294,7 +314,12 @@
     ],
     "summary": {
       "total": "6",
-      "committed": "100%"
+      "committed": "100%",
+      "labels": {
+        "totalAchievements": "Logros Totales",
+        "committed": "Comprometido", 
+        "progress": "Progreso"
+      }
     }
   },
 
@@ -320,40 +345,40 @@
     "directContact": "¿Prefieres contactarme directamente?"
   },
 
-"socialNetworks": [
-  {
-    "name": "LinkedIn",
-    "url": "https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/",
-    "icon": "/linkedin-icon.svg",
-    "bgColor": "bg-gray-900",
-    "borderColor": "border-blue-500",
-    "glowColor": "shadow-[0_0_15px_rgba(59,130,246,0.7)]"
-  },
-  {
-    "name": "Instagram",
-    "url": "https://www.instagram.com/jonar_andres/", 
-    "icon": "/instagram-icon.svg",
-    "bgColor": "bg-gray-900",
-    "borderColor": "border-pink-500",
-    "glowColor": "shadow-[0_0_15px_rgba(236,72,153,0.7)]"
-  },
-  {
-    "name": "GitHub",
-    "url": "https://github.com/Jonar519",
-    "icon": "/github-icon.svg", 
-    "bgColor": "bg-gray-900",
-    "borderColor": "border-green-500",
-    "glowColor": "shadow-[0_0_15px_rgba(34,197,94,0.7)]"
-  },
-  {
-    "name": "Vercel",
-    "url": "https://vercel.com/chitivanets-projects",
-    "icon": "/vercel-icon.svg",
-    "bgColor": "bg-gray-900",
-    "borderColor": "border-purple-500", 
-    "glowColor": "shadow-[0_0_15px_rgba(168,85,247,0.7)]"
-  }
-],
+  "socialNetworks": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/chitivanet-undefined-42a4a4355/",
+      "icon": "/linkedin-icon.svg",
+      "bgColor": "bg-gray-900",
+      "borderColor": "border-blue-500",
+      "glowColor": "shadow-[0_0_15px_rgba(59,130,246,0.7)]"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/jonar_andres/", 
+      "icon": "/instagram-icon.svg",
+      "bgColor": "bg-gray-900",
+      "borderColor": "border-pink-500",
+      "glowColor": "shadow-[0_0_15px_rgba(236,72,153,0.7)]"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/Jonar519",
+      "icon": "/github-icon.svg", 
+      "bgColor": "bg-gray-900",
+      "borderColor": "border-green-500",
+      "glowColor": "shadow-[0_0_15px_rgba(34,197,94,0.7)]"
+    },
+    {
+      "name": "Vercel",
+      "url": "https://vercel.com/chitivanets-projects",
+      "icon": "/vercel-icon.svg",
+      "bgColor": "bg-gray-900",
+      "borderColor": "border-purple-500", 
+      "glowColor": "shadow-[0_0_15px_rgba(168,85,247,0.7)]"
+    }
+  ],
 
   "footer": {
     "copyright": "© 2025 Jonar Andrés | Estilo Gamer-Tech ⚡ Inspirado en Samsung",
