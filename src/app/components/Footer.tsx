@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 
 export default function Footer() {
@@ -19,13 +18,13 @@ export default function Footer() {
               className={`w-10 h-10 flex items-center justify-center ${social.bgColor} rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg`}
               title={social.name}
             >
-              <img
-                src={social.icon}
-                alt={social.name}
-                width={20}
-                height={20}
-                className=""
-              />
+              <div className="w-5 h-5 relative">
+                <img
+                  src={social.icon}
+                  alt={social.name}
+                  className="w-full h-full"
+                />
+              </div>
             </a>
           ))}
         </div>

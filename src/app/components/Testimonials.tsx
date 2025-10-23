@@ -48,11 +48,11 @@ export default function Testimonials() {
           </div>
 
           <div className="relative">
-            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">"</div>
+            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">&quot;</div>
             <p className="text-gray-200 text-xl sm:text-2xl leading-relaxed text-center italic relative z-10">
               {testimonials.testimonials[activeTestimonio].text}
             </p>
-            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">"</div>
+            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">&quot;</div>
           </div>
         </div>
 

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 
 export default function CV() {
