@@ -129,7 +129,7 @@ export interface Achievement {
   description: string;
   icon: string;
   level: string;
-  progress: number;
+  status: string;
   category: string;
   date: string;
 }
@@ -140,11 +140,11 @@ export interface Achievements {
   achievements: Achievement[];
   summary: {
     total: string;
-    committed: string;
+    completed: string;
     labels: {
       totalAchievements: string;
-      committed: string;
-      progress: string;
+      completed: string;
+      status: string;
     };
   };
 }
@@ -246,7 +246,8 @@ export const useContent = () => {
       'HOME': 'inicio',
       'ACERCA': 'acerca', 
       'ABOUT': 'acerca',
-      'CV': 'cv',
+      'HABILIDADES': 'cv',
+      'SKILLS': 'cv',
       'EXPERIENCIA': 'experiencia',
       'EXPERIENCE': 'experiencia',
       'PROYECTOS': 'proyectos',
