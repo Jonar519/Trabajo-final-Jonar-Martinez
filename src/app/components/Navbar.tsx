@@ -99,7 +99,7 @@ export default function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
         <div className="flex items-center gap-6">
           <LanguageSwitcher />
           
-          <div className="hidden md:flex space-x-6 lg:space-x-8 text-xs sm:text-sm uppercase font-semibold tracking-wide">
+          <div className="hidden md:flex space-x-6 lg:space-x-8 text-sm sm:text-base uppercase font-semibold tracking-wide">
             {content.navigation.sections.map((section) => {
               const sectionId = getSectionId(section);
               return (
@@ -160,7 +160,7 @@ export default function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
                       : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50"
                   }`}
                 >
-                  <span className="flex items-center gap-3 text-base font-medium">
+                  <span className="flex items-center gap-3 text-lg font-medium">
                     {activeSection === sectionId && (
                       <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0"></span>
                     )}

@@ -33,11 +33,11 @@ export default function About() {
 
         {/* Contenido */}
         <div className="text-center md:text-left">
-          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+          <h2 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-6">
             {about.title}
           </h2>
           
-          <p className="text-gray-300 leading-relaxed text-base sm:text-lg mb-8">
+          <p className="text-gray-300 leading-relaxed text-lg sm:text-xl mb-8">
             {about.content}
           </p>
 
@@ -52,22 +52,22 @@ export default function About() {
                     : 'border-cyan-500/30 hover:border-cyan-400'
                 } transition-colors`}
               >
-                <div className={`text-2xl font-bold ${
+                <div className={`text-3xl font-bold ${
                   stat.color === 'green' ? 'text-green-400' : 'text-cyan-400'
                 }`}>
                   {stat.value}
                 </div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
+                <div className="text-gray-400 text-base">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* Enfoque profesional */}
           <div className="mb-8 p-6 bg-gray-900/50 rounded-xl border border-gray-700">
-            <h3 className="text-white font-semibold mb-3 flex items-center gap-2 justify-center md:justify-start">
+            <h3 className="text-xl font-semibold mb-3 flex items-center gap-2 justify-center md:justify-start">
               {about.focus.title}
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-gray-300 text-base leading-relaxed">
               {about.focus.content}
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function About() {
               <button 
                 key={index}
                 onClick={() => handleButtonAction(button.action)}
-                className={`px-6 py-3 ${
+                className={`px-6 py-3 text-lg ${
                   button.type === 'primary' 
                     ? 'bg-gradient-to-r from-green-400 to-cyan-400 text-black hover:scale-105 shadow-[0_0_20px_rgba(34,197,94,0.6)]'
                     : 'border border-green-400 text-green-300 hover:bg-green-400/10'

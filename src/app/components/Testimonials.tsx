@@ -12,11 +12,11 @@ export default function Testimonials() {
   return (
     <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-black">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-amber-200 to-orange-400 bg-clip-text text-transparent mb-6">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-amber-200 to-orange-400 bg-clip-text text-transparent mb-6">
           {testimonials.title}
         </h2>
         
-        <p className="text-gray-400 text-center mb-12 text-lg">
+        <p className="text-gray-400 text-xl text-center mb-12">
           {testimonials.description}
         </p>
 
@@ -35,25 +35,24 @@ export default function Testimonials() {
             
             <div className="flex justify-center mb-4">
               {[...Array(testimonials.testimonials[activeTestimonio].rating)].map((_, i) => (
-                <span key={i} className="text-amber-400 text-xl">★</span>
+                <span key={i} className="text-amber-400 text-2xl">★</span>
               ))}
             </div>
             
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="text-3xl font-bold text-white mb-2">
               {testimonials.testimonials[activeTestimonio].name}
             </h3>
-            <p className="text-amber-300 text-sm mb-6">
+            <p className="text-amber-300 text-lg mb-6">
               {testimonials.testimonials[activeTestimonio].role}
             </p>
           </div>
 
           <div className="relative">
-            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">&ldquo;</div>
-            {/* CORREGIDO: Comillas escapadas */}
-            <p className="text-gray-200 text-lg sm:text-xl leading-relaxed text-center italic relative z-10">
-              &ldquo;{testimonials.testimonials[activeTestimonio].text}&rdquo;
+            <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20">"</div>
+            <p className="text-gray-200 text-xl sm:text-2xl leading-relaxed text-center italic relative z-10">
+              {testimonials.testimonials[activeTestimonio].text}
             </p>
-            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">&rdquo;</div>
+            <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20">"</div>
           </div>
         </div>
 
@@ -61,7 +60,7 @@ export default function Testimonials() {
         <div className="flex justify-between items-center mt-8">
           <button
             onClick={() => setActiveTestimonio(prev => prev === 0 ? testimonials.testimonials.length - 1 : prev - 1)}
-            className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="px-6 py-3 text-base bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             ◀ Anterior
           </button>
@@ -82,7 +81,7 @@ export default function Testimonials() {
 
           <button
             onClick={() => setActiveTestimonio(prev => (prev + 1) % testimonials.testimonials.length)}
-            className="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="px-6 py-3 text-base bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             Siguiente ▶
           </button>
@@ -90,7 +89,7 @@ export default function Testimonials() {
 
         {/* Contador */}
         <div className="text-center mt-6">
-          <span className="text-amber-400 text-sm">
+          <span className="text-amber-400 text-base">
             {activeTestimonio + 1} / {testimonials.testimonials.length}
           </span>
         </div>

@@ -47,11 +47,16 @@ function FloatingParticles() {
 }
 
 export default function Hero() {
-  const { content, scrollToSection } = useContent();
-  const { hero } = content;
+  const { content } = useContent();
+  const { hero, cv } = content;
 
-  const handleCVClick = () => {
-    scrollToSection('cv');
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/cv-jonar-andres.pdf';
+    link.download = 'CV-Jonar-Andres.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -68,17 +73,17 @@ export default function Hero() {
       {/* Contenido principal */}
       <div className="relative z-10 w-full max-w-4xl mx-auto">
         {/* Título principal */}
-        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight tracking-wide bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent animate-textGlow">
+        <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 leading-tight tracking-wide bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent animate-textGlow">
           {hero.title}
         </h2>
         
         {/* Descripción */}
-        <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed animate-fadeIn">
+        <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed animate-fadeIn">
           {hero.description}
         </p>
 
         {/* Stats rápidas */}
-        <div className="flex justify-center gap-6 mb-8 text-sm text-gray-400">
+        <div className="flex justify-center gap-6 mb-8 text-base text-gray-400">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             <span>{hero.status}</span>
@@ -89,16 +94,16 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Botón */}
+        {/* Botón Descargar CV */}
         <div className="flex justify-center">
           <button 
-            onClick={handleCVClick}
-            className="px-8 sm:px-10 py-4 bg-gradient-to-r from-green-400 to-cyan-400 text-black font-bold rounded-full hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(34,197,94,0.6)] hover:shadow-[0_0_35px_rgba(34,197,94,0.8)] relative overflow-hidden group"
+            onClick={downloadCV}
+            className="px-8 sm:px-10 py-4 text-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full hover:scale-110 transition-all duration-300 shadow-[0_0_25px_rgba(34,211,238,0.6)] hover:shadow-[0_0_35px_rgba(34,211,238,0.8)] flex items-center gap-2 mx-auto border-2 border-cyan-400"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              {hero.ctaButton}
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            {cv.downloadButton}
           </button>
         </div>
       </div>

@@ -9,7 +9,7 @@
   },
   
   "navigation": {
-    "sections": ["HOME", "ABOUT", "CV", "EXPERIENCE", "PROJECTS", "TESTIMONIALS", "EXTRA", "CONTACT"]
+    "sections": ["HOME", "ABOUT", "SKILLS", "EXPERIENCE", "PROJECTS", "TESTIMONIALS", "EXTRA", "CONTACT"]
   },
 
   "hero": {
@@ -17,7 +17,7 @@
     "description": "Software Engineering Student | Passionate about web development, UI/UX design and modern technologies ⚡",
     "status": "Available for projects",
     "projectsCompleted": "+5 Projects completed",
-    "ctaButton": "📄 View my CV"
+    "ctaButton": "📄 Download CV PDF"
   },
 
   "about": {
@@ -54,7 +54,7 @@
   },
 
   "cv": {
-    "title": "CV / Resume",
+    "title": "Technical Skills",
     "position": "Full Stack Developer",
     
     "skills": [
@@ -94,7 +94,7 @@
     "downloadButton": "📄 Download CV PDF",
     
     "sections": {
-      "technicalSkills": "Technical Skills",
+      "technicalSkills": "Technologies & Tools",
       "contact": "Contact", 
       "socialNetworks": "Social Networks",
       "education": "Education",
@@ -204,7 +204,7 @@
     
     "buttons": {
       "viewDemo": "View Demo",
-      "repository": "Repository"
+      "repository": "GitHub"
     }
   },
 
@@ -257,7 +257,7 @@
         "description": "First place in development competition with innovative project",
         "icon": "🏆",
         "level": "Legendary",
-        "progress": 100,
+        "status": "✅ Completed",
         "category": "Competitions", 
         "date": "2024"
       },
@@ -267,7 +267,7 @@
         "description": "Significant contributions to open source projects on GitHub",
         "icon": "🚀",
         "level": "Epic", 
-        "progress": 85,
+        "status": "🚀 In Progress",
         "category": "Community",
         "date": "2023-2024"
       },
@@ -277,7 +277,7 @@
         "description": "Mastery of complete stack: Frontend, Backend and DevOps", 
         "icon": "⚡",
         "level": "Rare",
-        "progress": 90,
+        "status": "✅ Completed",
         "category": "Skills",
         "date": "2024"
       },
@@ -287,7 +287,7 @@
         "description": "More than 10 projects deployed and running in production",
         "icon": "🌐", 
         "level": "Epic",
-        "progress": 100,
+        "status": "✅ Completed",
         "category": "Deployment",
         "date": "2023-2024"
       },
@@ -297,7 +297,7 @@
         "description": "Mentoring junior developers in the tech community",
         "icon": "👨‍💻",
         "level": "Rare",
-        "progress": 75,
+        "status": "📅 Planned",
         "category": "Leadership",
         "date": "2024" 
       },
@@ -307,18 +307,18 @@
         "description": "Identification and solution of critical bugs in projects",
         "icon": "🔍",
         "level": "Common",
-        "progress": 100,
+        "status": "⭐ Featured",
         "category": "Quality",
         "date": "2024"
       }
     ],
     "summary": {
       "total": "6",
-      "committed": "100%",
+      "completed": "3",
       "labels": {
         "totalAchievements": "Total Achievements",
-        "committed": "Committed", 
-        "progress": "Progress"
+        "completed": "Completed", 
+        "status": "Status"
       }
     }
   },

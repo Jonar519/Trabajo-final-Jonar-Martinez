@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeProject, setActiveProject] = useState<number>(0);
   const { content } = useContent();
   const { projects } = content;
 
@@ -62,10 +62,10 @@ export default function Projects() {
       {/* Fondo decorativo */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20"></div>
       
-      <h2 className="text-4xl sm:text-5xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 relative z-10">
+      <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 relative z-10">
         {projects.title}
       </h2>
-      <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto relative z-10">
+      <p className="text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
         {projects.description}
       </p>
 
@@ -133,7 +133,7 @@ export default function Projects() {
                         className="object-cover"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-black/80 text-purple-300 text-xs rounded-full border border-purple-500">
+                        <span className="px-3 py-1 bg-black/80 text-purple-300 text-sm rounded-full border border-purple-500">
                           {realProject.category}
                         </span>
                       </div>
@@ -141,8 +141,8 @@ export default function Projects() {
 
                     {/* Contenido */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">{realProject.title}</h3>
-                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                      <h3 className="text-2xl font-bold text-white mb-2">{realProject.title}</h3>
+                      <p className="text-gray-400 text-base mb-4 leading-relaxed">
                         {realProject.description}
                       </p>
 
@@ -151,7 +151,7 @@ export default function Projects() {
                         {realProject.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded border border-purple-500/30"
+                            className="px-2 py-1 bg-purple-500/20 text-purple-300 text-sm rounded border border-purple-500/30"
                           >
                             {tech}
                           </span>
@@ -165,7 +165,7 @@ export default function Projects() {
                             href={realProject.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-sm font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
+                            className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-base font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
                           >
                             <span>🌐</span> {projects.buttons.viewDemo}
                           </a>
@@ -173,7 +173,7 @@ export default function Projects() {
                             href={realProject.codeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-sm font-semibold hover:bg-purple-500/10 transition-colors flex items-center justify-center gap-2"
+                            className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-base font-semibold hover:bg-purple-500/10 transition-colors flex items-center justify-center gap-2"
                           >
                             <span>📂</span> {projects.buttons.repository}
                           </a>
@@ -218,7 +218,7 @@ export default function Projects() {
 
         {/* Contador */}
         <div className="text-center mt-4 space-y-2">
-          <span className="text-purple-300 text-sm block">
+          <span className="text-purple-300 text-base block">
             {getRealIndex(activeProject) + 1} / {projects.projects.length}
           </span>
         </div>

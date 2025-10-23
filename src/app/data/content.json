@@ -9,7 +9,7 @@
   },
   
   "navigation": {
-    "sections": ["INICIO", "ACERCA", "CV", "EXPERIENCIA", "PROYECTOS", "TESTIMONIOS", "EXTRA", "CONTACTO"]
+    "sections": ["INICIO", "ACERCA", "HABILIDADES", "EXPERIENCIA", "PROYECTOS", "TESTIMONIOS", "EXTRA", "CONTACTO"]
   },
 
   "hero": {
@@ -17,7 +17,7 @@
     "description": "Estudiante de Ingeniería de Software | Apasionado por el desarrollo web, el diseño de interfaces y la innovación tecnológica ⚡",
     "status": "Disponible para proyectos",
     "projectsCompleted": "+5 Proyectos completados",
-    "ctaButton": "📄 Ver mi CV"
+    "ctaButton": "📄 Descargar CV PDF"
   },
 
   "about": {
@@ -54,7 +54,7 @@
   },
 
   "cv": {
-    "title": "CV / Hoja de Vida",
+    "title": "Habilidades Técnicas",
     "position": "Desarrollador Full Stack",
     
     "skills": [
@@ -94,7 +94,7 @@
     "downloadButton": "📄 Descargar CV PDF",
     
     "sections": {
-      "technicalSkills": "Habilidades Técnicas",
+      "technicalSkills": "Tecnologías y Herramientas",
       "contact": "Contacto", 
       "socialNetworks": "Redes Sociales",
       "education": "Educación",
@@ -204,7 +204,7 @@
     
     "buttons": {
       "viewDemo": "Ver Demo",
-      "repository": "Repositorio"
+      "repository": "GitHub"
     }
   },
 
@@ -257,7 +257,7 @@
         "description": "Primer lugar en competencia de desarrollo con proyecto innovador",
         "icon": "🏆",
         "level": "Legendario",
-        "progress": 100,
+        "status": "✅ Completado",
         "category": "Competencias", 
         "date": "2024"
       },
@@ -267,7 +267,7 @@
         "description": "Contribuciones significativas a proyectos open source en GitHub",
         "icon": "🚀",
         "level": "Épico", 
-        "progress": 85,
+        "status": "🚀 En progreso",
         "category": "Comunidad",
         "date": "2023-2024"
       },
@@ -277,7 +277,7 @@
         "description": "Dominio de stack completo: Frontend, Backend y DevOps", 
         "icon": "⚡",
         "level": "Raro",
-        "progress": 90,
+        "status": "✅ Completado",
         "category": "Habilidades",
         "date": "2024"
       },
@@ -287,7 +287,7 @@
         "description": "Más de 10 proyectos desplegados y funcionando en producción",
         "icon": "🌐", 
         "level": "Épico",
-        "progress": 100,
+        "status": "✅ Completado",
         "category": "Despliegue",
         "date": "2023-2024"
       },
@@ -297,7 +297,7 @@
         "description": "Mentoría a desarrolladores junior en la comunidad tech",
         "icon": "👨‍💻",
         "level": "Raro",
-        "progress": 75,
+        "status": "📅 Planeado",
         "category": "Liderazgo",
         "date": "2024" 
       },
@@ -307,18 +307,18 @@
         "description": "Identificación y solución de bugs críticos en proyectos",
         "icon": "🔍",
         "level": "Común",
-        "progress": 100,
+        "status": "⭐ Destacado",
         "category": "Calidad",
         "date": "2024"
       }
     ],
     "summary": {
       "total": "6",
-      "committed": "100%",
+      "completed": "3",
       "labels": {
         "totalAchievements": "Logros Totales",
-        "committed": "Comprometido", 
-        "progress": "Progreso"
+        "completed": "Completados", 
+        "status": "Estado"
       }
     }
   },
