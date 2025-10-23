@@ -5,56 +5,109 @@ import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const { content } = useContent();
   const { projects } = content;
 
-  // Crear array extendido para el efecto infinito
-  const extendedProyectos = [...projects.projects, ...projects.projects, ...projects.projects];
+  const totalProjects = projects.projects.length;
 
   const nextProject = () => {
-    setActiveProject((prev) => {
-      const nextIndex = prev + 1;
-      if (nextIndex >= projects.projects.length * 2) {
-        return projects.projects.length;
-      }
-      return nextIndex;
-    });
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex((prev) => (prev + 1) % totalProjects);
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const prevProject = () => {
-    setActiveProject((prev) => {
-      const prevIndex = prev - 1;
-      if (prevIndex < 0) {
-        return projects.projects.length - 1;
-      }
-      return prevIndex;
-    });
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const goToProject = (index: number) => {
-    setActiveProject(index + projects.projects.length);
+    if (isTransitioning || index === activeIndex) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex(index);
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
-  // Efecto para resetear suavemente cuando llegue a los extremos
-  useEffect(() => {
-    if (activeProject >= projects.projects.length * 2) {
-      const timer = setTimeout(() => {
-        setActiveProject(projects.projects.length);
-      }, 50);
-      return () => clearTimeout(timer);
+  // Función para calcular la posición de cada proyecto
+  const getProjectPosition = (index: number) => {
+    // Calcular la distancia desde el proyecto activo
+    let distance = index - activeIndex;
+    
+    // Ajustar la distancia para el wrap around
+    if (distance > totalProjects / 2) {
+      distance = distance - totalProjects;
+    } else if (distance < -totalProjects / 2) {
+      distance = distance + totalProjects;
     }
-    if (activeProject < 0) {
-      const timer = setTimeout(() => {
-        setActiveProject(projects.projects.length - 1);
-      }, 50);
-      return () => clearTimeout(timer);
-    }
-  }, [activeProject, projects.projects.length]);
 
-  // Calcular el índice real para mostrar la información correcta
-  const getRealIndex = (index: number) => {
-    return index % projects.projects.length;
+    const absDistance = Math.abs(distance);
+
+    // Proyecto activo
+    if (distance === 0) {
+      return {
+        transform: "translateX(0) scale(1) rotateY(0deg)",
+        zIndex: 30,
+        opacity: 1,
+        filter: "blur(0px)",
+        pointerEvents: "auto" as const,
+      };
+    }
+
+    // Proyectos a la izquierda
+    if (distance < 0) {
+      const translateX = -Math.min(280 + absDistance * 60, 500);
+      const scale = Math.max(0.8 - absDistance * 0.15, 0.4);
+      const opacity = Math.max(0.7 - absDistance * 0.2, 0.1);
+      const blur = Math.min(absDistance * 1.5, 6);
+      const rotateY = Math.min(absDistance * 3, 10);
+      
+      return {
+        transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
+        zIndex: 20 - absDistance,
+        opacity,
+        filter: `blur(${blur}px)`,
+        pointerEvents: "auto" as const,
+      };
+    }
+
+    // Proyectos a la derecha
+    if (distance > 0) {
+      const translateX = Math.min(280 + absDistance * 60, 500);
+      const scale = Math.max(0.8 - absDistance * 0.15, 0.4);
+      const opacity = Math.max(0.7 - absDistance * 0.2, 0.1);
+      const blur = Math.min(absDistance * 1.5, 6);
+      const rotateY = -Math.min(absDistance * 3, 10);
+      
+      return {
+        transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
+        zIndex: 20 - absDistance,
+        opacity,
+        filter: `blur(${blur}px)`,
+        pointerEvents: "auto" as const,
+      };
+    }
+  };
+
+  // Ocultar proyectos que están muy lejos
+  const shouldShowProject = (index: number) => {
+    let distance = index - activeIndex;
+    
+    // Ajustar la distancia para el wrap around
+    if (distance > totalProjects / 2) {
+      distance = distance - totalProjects;
+    } else if (distance < -totalProjects / 2) {
+      distance = distance + totalProjects;
+    }
+
+    return Math.abs(distance) <= 2; // Mostrar solo 2 proyectos a cada lado
   };
 
   return (
@@ -71,84 +124,55 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Carrusel Container */}
-        <div className="relative h-[500px] flex items-center justify-center">
+        <div className="relative h-[600px] flex items-center justify-center">
           
-          {/* Proyectos - Efecto 3D Infinito */}
-          <div className="relative w-full h-full flex items-center justify-center perspective">
-            {extendedProyectos.map((proyecto, index) => {
-              const distance = Math.abs(index - activeProject);
-              const isActive = index === activeProject;
-              const isLeft = index < activeProject;
-              const isRight = index > activeProject;
+          {/* Proyectos - Carrusel infinito suave */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {projects.projects.map((project, index) => {
+              if (!shouldShowProject(index)) return null;
 
-              let transform = "";
-              let zIndex = 0;
-              let opacity = 1;
-
-              if (isActive) {
-                transform = "translateX(0) scale(1)";
-                zIndex = 30;
-              } else if (isLeft) {
-                transform = `translateX(-${120 + distance * 60}px) scale(${1 - distance * 0.15})`;
-                zIndex = 20 - distance;
-                opacity = 1 - distance * 0.3;
-              } else if (isRight) {
-                transform = `translateX(${120 + distance * 60}px) scale(${1 - distance * 0.15})`;
-                zIndex = 20 - distance;
-                opacity = 1 - distance * 0.3;
-              }
-
-              // Ocultar proyectos muy lejanos para mejor performance
-              if (distance > 3) {
-                return null;
-              }
-
-              const realIndex = getRealIndex(index);
-              const realProject = projects.projects[realIndex];
+              const style = getProjectPosition(index);
+              const isActive = index === activeIndex;
 
               return (
                 <div
-                  key={`${realProject.id}-${index}`}
-                  className={`absolute w-80 transition-all duration-500 ease-in-out ${
+                  key={project.id}
+                  className={`absolute w-80 transition-all duration-600 ease-out ${
                     isActive ? "cursor-default" : "cursor-pointer"
                   }`}
-                  style={{
-                    transform,
-                    zIndex,
-                    opacity: Math.max(opacity, 0.3)
-                  }}
-                  onClick={() => !isActive && goToProject(realIndex)}
+                  style={style}
+                  onClick={() => !isActive && goToProject(index)}
                 >
-                  <div className={`bg-gradient-to-br from-gray-900 to-black border-2 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 ${
+                  <div className={`bg-gradient-to-br from-gray-900 to-black border-2 rounded-xl overflow-hidden shadow-2xl transition-all duration-500 ${
                     isActive 
                       ? "border-purple-500 shadow-[0_0_40px_rgba(168,85,247,0.6)]" 
-                      : "border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]"
+                      : "border-purple-400/30 shadow-[0_0_15px_rgba(168,85,247,0.2)] hover:border-purple-400/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]"
                   }`}>
                     {/* Imagen del proyecto */}
                     <div className="relative h-48 bg-gradient-to-r from-purple-500 to-pink-500">
                       <Image
-                        src={realProject.image}
-                        alt={realProject.title}
+                        src={project.image}
+                        alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-500 hover:scale-105"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 bg-black/80 text-purple-300 text-sm rounded-full border border-purple-500">
-                          {realProject.category}
+                          {project.category}
                         </span>
                       </div>
                     </div>
 
                     {/* Contenido */}
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-white mb-2">{realProject.title}</h3>
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
                       <p className="text-gray-400 text-base mb-4 leading-relaxed">
-                        {realProject.description}
+                        {project.description}
                       </p>
 
                       {/* Tecnologías */}
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {realProject.technologies.map((tech, techIndex) => (
+                        {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
                             className="px-2 py-1 bg-purple-500/20 text-purple-300 text-sm rounded border border-purple-500/30"
@@ -160,20 +184,20 @@ export default function Projects() {
 
                       {/* Botones - Solo visible en proyecto activo */}
                       {isActive && (
-                        <div className="flex gap-3">
+                        <div className="flex gap-3 animate-fadeIn">
                           <a
-                            href={realProject.demoUrl}
+                            href={project.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-base font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2"
+                            className="flex-1 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center rounded-lg text-base font-semibold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2"
                           >
                             <span>🌐</span> {projects.buttons.viewDemo}
                           </a>
                           <a
-                            href={realProject.codeUrl}
+                            href={project.codeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-base font-semibold hover:bg-purple-500/10 transition-colors flex items-center justify-center gap-2"
+                            className="flex-1 py-2 border border-purple-500 text-purple-300 text-center rounded-lg text-base font-semibold hover:bg-purple-500/10 transition-all duration-300 flex items-center justify-center gap-2"
                           >
                             <span>📂</span> {projects.buttons.repository}
                           </a>
@@ -189,15 +213,30 @@ export default function Projects() {
           {/* Controles de navegación */}
           <button
             onClick={prevProject}
-            className="absolute left-4 bg-purple-600/80 hover:bg-purple-500 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-40"
+            disabled={isTransitioning}
+            className={`absolute left-4 p-4 rounded-full shadow-lg transition-all duration-300 z-40 ${
+              isTransitioning 
+                ? "bg-purple-400/50 cursor-not-allowed" 
+                : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110"
+            }`}
           >
-            ◀
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
           </button>
+          
           <button
             onClick={nextProject}
-            className="absolute right-4 bg-purple-600/80 hover:bg-purple-500 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-40"
+            disabled={isTransitioning}
+            className={`absolute right-4 p-4 rounded-full shadow-lg transition-all duration-300 z-40 ${
+              isTransitioning 
+                ? "bg-purple-400/50 cursor-not-allowed" 
+                : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110"
+            }`}
           >
-            ▶
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
 
@@ -207,11 +246,12 @@ export default function Projects() {
             <button
               key={index}
               onClick={() => goToProject(index)}
+              disabled={isTransitioning}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                getRealIndex(activeProject) === index
+                index === activeIndex
                   ? "bg-purple-400 scale-125 shadow-[0_0_10px_rgba(168,85,247,0.8)]"
                   : "bg-purple-600 hover:bg-purple-400"
-              }`}
+              } ${isTransitioning ? "cursor-not-allowed" : "cursor-pointer"}`}
             />
           ))}
         </div>
@@ -219,7 +259,7 @@ export default function Projects() {
         {/* Contador */}
         <div className="text-center mt-4 space-y-2">
           <span className="text-purple-300 text-base block">
-            {getRealIndex(activeProject) + 1} / {projects.projects.length}
+            {activeIndex + 1} / {totalProjects}
           </span>
         </div>
       </div>
