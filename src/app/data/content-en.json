@@ -2,10 +2,10 @@
   "site": {
     "title": "My Portfolio",
     "author": "Jonar Andrés",
-    "description": "Software Engineering Student | Full Stack Developer",
+    "description": "Software Engineering Student",
     "email": "jonarmartinez519@gmail.com",
     "phone": "+57 3127796502",
-    "location": "Pasto, Nariño - Colombia"
+    "location": "Pasto, Nariño"
   },
   
   "navigation": {
@@ -14,15 +14,15 @@
 
   "hero": {
     "title": "Welcome to My Portfolio",
-    "description": "Software Engineering Student | Passionate about web development, UI/UX design and modern technologies ⚡",
+    "description": "Software Engineering student passionate about creating unique digital experiences. Specialized in frontend web development, functional interface design, and technological innovation to take ideas to the next level. ⚡",
     "status": "Available for projects",
     "projectsCompleted": "+5 Projects completed",
-    "ctaButton": "📄 Download CV PDF"
+    "ctaButton": "📄 Download CV"
   },
 
   "about": {
     "title": "About Me",
-    "content": "I am a **Software Engineering** student with great interest in web application development, UX/UI design and modern technologies like **React, Next.js and Tailwind CSS**. I love creating projects that mix creativity, functionality and gamer style.",
+    "content": "I am a Software Engineering student focused on web application development, UX/UI design, and modern technologies like React, Next.js, and Tailwind CSS. I'm passionate about creating projects that combine creativity, functionality, and innovative style inspired by the gaming world.",
     "stats": [
       {
         "value": "+5",
@@ -37,7 +37,7 @@
     ],
     "focus": {
       "title": "🎯 My Focus",
-      "content": "I specialize in creating modern and responsive digital experiences, combining best development practices with innovative designs that captivate users."
+      "content": "Specialized in creating modern, fully responsive digital experiences, integrating development best practices with innovative designs that captivate and connect with users."
     },
     "buttons": [
       {
@@ -55,49 +55,54 @@
 
   "cv": {
     "title": "Technical Skills",
-    "position": "Full Stack Developer",
+    "position": "Software Engineering Student",
     
     "skills": [
-      { "name": "React", "level": "Advanced", "category": "Frontend" },
-      { "name": "Next.js", "level": "Advanced", "category": "Frontend" },
+      { "name": "React", "level": "Intermediate", "category": "Frontend" },
+      { "name": "Next.js", "level": "Intermediate", "category": "Frontend" },
       { "name": "TypeScript", "level": "Intermediate", "category": "Languages" },
-      { "name": "Tailwind CSS", "level": "Expert", "category": "Frontend" },
+      { "name": "Tailwind CSS", "level": "Intermediate", "category": "Frontend" },
       { "name": "Node.js", "level": "Intermediate", "category": "Backend" },
-      { "name": "Python", "level": "Intermediate", "category": "Languages" },
+      { "name": "Python", "level": "Advanced", "category": "Languages" },
       { "name": "Git/GitHub", "level": "Advanced", "category": "Tools" },
-      { "name": "Figma", "level": "Intermediate", "category": "Design" }
+      { "name": "Figma", "level": "Advanced", "category": "Design" }
     ],
 
     "education": [
       {
         "degree": "Software Engineering",
-        "institution": "University XYZ", 
-        "year": "2022-2026"
+        "institution": "Cooperativa de Colombia University - Pasto Campus", 
+        "year": "2023 - Present"
       },
       {
-        "degree": "Advanced React Course",
+        "degree": "Python Course",
         "institution": "Platzi",
         "year": "2023"
       },
       {
-        "degree": "AWS Certification", 
-        "institution": "Amazon Web Services",
-        "year": "2024"
+        "degree": "Technical High School Diploma",
+        "institution": "Institución Educativa Técnica El Espino",
+        "year": "2010 - 2020"
+      },
+      {
+        "degree": "Primary Education", 
+        "institution": "Escuela Normal Superior La Inmaculada",
+        "year": "2007 - 2010"
       }
     ],
 
     "languages": [
       { "language": "Spanish", "level": "Native" },
-      { "language": "English", "level": "Advanced (B2)" }
+      { "language": "English", "level": "Intermediate (B1)" }
     ],
 
-    "downloadButton": "📄 Download CV PDF",
+    "downloadButton": "📄 Download CV",
     
     "sections": {
       "technicalSkills": "Technologies & Tools",
       "contact": "Contact", 
       "socialNetworks": "Social Networks",
-      "education": "Education",
+      "education": "Academic Background",
       "languages": "Languages"
     }
   },
@@ -106,36 +111,36 @@
     "title": "My Journey",
     "experiences": [
       {
-        "title": "Full Stack Developer",
-        "company": "Innovative Tech Company", 
-        "period": "2024 - Present",
-        "description": "Development of modern web applications with cutting-edge technologies.",
+        "title": "Dairy Technician",
+        "company": "Institución Educativa Técnica El Espino", 
+        "period": "2018 - 2020",
+        "description": "Development and production of various dairy products for commercialization within the educational institution.",
         "achievements": [
-          "Led the development of 3 projects",
-          "Improved performance by 40%", 
-          "Implemented CI/CD"
+          "Led the first-year technical program group",
+          "Participation in dairy product fairs", 
+          "Municipal recognition for product quality"
         ]
       },
       {
-        "title": "Web Development Intern",
-        "company": "Digital Startup",
-        "period": "2023 - 2024",
-        "description": "Focus on frontend development and user experience.", 
+        "title": "Architecture Student",
+        "company": "Cesmag University",
+        "period": "2021 - 2022",
+        "description": "Architecture studies that developed my creativity, design sense, and spatial understanding.", 
         "achievements": [
-          "Developed 10+ components",
-          "Optimized site loading",
-          "Collaborated in agile team"
+          "Development of 5+ architectural projects",
+          "Participation in Architecture Expo",
+          "Collaborative work in academic teams"
         ]
       },
       {
-        "title": "University Student",
-        "company": "University XYZ",
-        "period": "2022 - 2026", 
-        "description": "Comprehensive training in software engineering and technologies.",
+        "title": "Software Engineering Student",
+        "company": "Cooperativa de Colombia University",
+        "period": "2023 - Present", 
+        "description": "Comprehensive training in software engineering, development technologies, and best practices.",
         "achievements": [
-          "GPA 4.5/5.0",
-          "Outstanding projects", 
-          "Hackathon participation"
+          "Academic average 4.3/4.5",
+          "Development of outstanding projects", 
+          "Active participation in tech seminars"
         ]
       }
     ],
@@ -148,12 +153,12 @@
 
   "projects": {
     "title": "My Projects",
-    "description": "Explore my real projects developed with the latest technologies. Click to visit them!",
+    "description": "Explore some of my projects developed with modern technologies. You can discover more by visiting my GitHub profile. Click and check them out!",
     "projects": [
       {
         "id": 1,
         "title": "Personal Portfolio",
-        "description": "My personal portfolio developed with Next.js, Tailwind CSS and TypeScript. Modern and responsive design with gamer-tech theme.",
+        "description": "Personal portfolio developed with Next.js, Tailwind CSS and TypeScript. Modern, responsive design with gamer-tech theme.",
         "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "React"],
         "image": "/proyecto1.jpg",
         "demoUrl": "https://example-portfolio-bay.vercel.app/es", 
@@ -163,7 +168,7 @@
       {
         "id": 2,
         "title": "Responsive Design",
-        "description": "Website with completely responsive design, implementing best practices of CSS Grid, Flexbox and adaptable design.",
+        "description": "Fully responsive website implementing CSS Grid, Flexbox best practices and adaptive design.",
         "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
         "image": "/proyecto2.jpg",
         "demoUrl": "https://responsive-design-6xpt.vercel.app/",
@@ -172,7 +177,7 @@
       },
       {
         "id": 3,
-        "title": "Academic Work",
+        "title": "Academic Project",
         "description": "Academic project developed as part of my training, implementing advanced web development concepts.",
         "technologies": ["HTML5", "CSS3", "JavaScript", "Vercel"],
         "image": "/proyecto3.jpg", 
@@ -183,7 +188,7 @@
       {
         "id": 4,
         "title": "Ticket System", 
-        "description": "Web application for ticket management, with intuitive interface and management functionalities.",
+        "description": "Web application for ticket management with intuitive interface and complete administration features.",
         "technologies": ["React", "CSS3", "JavaScript", "Vercel"],
         "image": "/proyecto4.jpg",
         "demoUrl": "https://boleto-eight.vercel.app/",
@@ -193,7 +198,7 @@
       {
         "id": 5,
         "title": "Interface Design",
-        "description": "Academic work focused on user interface design, applying UX/UI principles and usability.",
+        "description": "Academic project focused on user interface design applying UX/UI principles and usability.",
         "technologies": ["Figma", "UI/UX", "Design System", "Prototyping"],
         "image": "/proyecto5.jpg",
         "demoUrl": "https://github.com/Jonar519/Trabajo-Dise-o-de-Intercafes-27-08",
@@ -204,7 +209,7 @@
     
     "buttons": {
       "viewDemo": "View Demo",
-      "repository": "GitHub"
+      "repository": "Repository"
     }
   },
 
@@ -217,13 +222,13 @@
         "name": "Person 1",
         "role": "CEO at Tech Company",
         "image": "/testimonio1.jpg",
-        "text": "The work reflects professionalism, innovation and a unique style. Highly recommended.",
+        "text": "The work reflects professionalism, innovation and unique style. Highly recommended.",
         "rating": 5
       },
       {
         "id": 2,
         "name": "Person 2", 
-        "role": "Project Leader",
+        "role": "Project Lead",
         "image": "/testimonio2.jpg",
         "text": "Excellent developer, always delivers quality and meets established deadlines.",
         "rating": 5
@@ -241,7 +246,7 @@
         "name": "Person 4",
         "role": "Developer Colleague",
         "image": "/testimonio4.jpg",
-        "text": "Great team member, always willing to help and share knowledge.",
+        "text": "Great team player, always willing to help and share knowledge.",
         "rating": 5
       }
     ]
@@ -249,72 +254,72 @@
 
   "achievements": {
     "title": "Personal Achievements", 
-    "description": "My development journey - Every achievement is a level completed in my professional career 🎮",
+    "description": "My development journey — Every experience, inside and outside software, has been another level in my evolution. 🎮",
     "achievements": [
       {
         "id": 1,
-        "title": "Hackathon Champion",
-        "description": "First place in development competition with innovative project",
+        "title": "Municipal Math Competition",
+        "description": "First place in municipal mathematics competition",
         "icon": "🏆",
-        "level": "Legendary",
+        "level": "Advanced",
         "status": "✅ Completed",
         "category": "Competitions", 
-        "date": "2024"
+        "date": "2014"
       },
       {
         "id": 2,
-        "title": "Open Source Contributor",
-        "description": "Significant contributions to open source projects on GitHub",
-        "icon": "🚀",
+        "title": "Zonal Municipal Soccer Championship",
+        "description": "Second place in zonal phase championship sub-15 held in Imués municipality",
+        "icon": "🥈",
         "level": "Epic", 
-        "status": "🚀 In Progress",
-        "category": "Community",
-        "date": "2023-2024"
+        "status": "✅ Completed",
+        "category": "Sports",
+        "date": "2017"
       },
       {
         "id": 3,
-        "title": "Tech Stack Master",
-        "description": "Mastery of complete stack: Frontend, Backend and DevOps", 
-        "icon": "⚡",
-        "level": "Rare",
+        "title": "Zonal Phase Inter-school Championship",
+        "description": "Third place in zonal phase inter-school championship sub-17", 
+        "icon": "🥉",
+        "level": "Advanced",
         "status": "✅ Completed",
-        "category": "Skills",
-        "date": "2024"
+        "category": "Sports",
+        "date": "2018"
       },
       {
         "id": 4,
-        "title": "Project Deployer",
-        "description": "More than 10 projects deployed and running in production",
-        "icon": "🌐", 
+        "title": "Municipal Drawing Contest",
+        "description": "Participation in municipal drawing contest, achieving fifth place among twenty participants",
+        "icon": "👨‍🎨", 
         "level": "Epic",
         "status": "✅ Completed",
-        "category": "Deployment",
-        "date": "2023-2024"
+        "category": "Art",
+        "date": "2019"
       },
       {
         "id": 5,
-        "title": "Code Mentor", 
-        "description": "Mentoring junior developers in the tech community",
-        "icon": "👨‍💻",
-        "level": "Rare",
-        "status": "📅 Planned",
-        "category": "Leadership",
-        "date": "2024" 
+        "title": "Zonal Mountain Biking Race", 
+        "description": "Participation in mountain biking race, achieving second place among fifteen participants",
+        "icon": "🚵‍♂️",
+        "level": "Advanced",
+        "status": "✅ Completed",
+        "category": "Sports",
+        "date": "2015" 
       },
       {
         "id": 6,
-        "title": "Bug Hunter",
-        "description": "Identification and solution of critical bugs in projects",
-        "icon": "🔍",
-        "level": "Common",
-        "status": "⭐ Featured",
-        "category": "Quality",
-        "date": "2024"
+        "title": "Architecture Studies",
+        "description": "Two years of Architecture studies, developing understanding of design, form, and color harmony. This experience strengthened my aesthetic vision and ability to create balanced, functional interfaces.",
+        "icon": "👷‍♂️",
+        "level": "Advanced",
+        "status": "Not Completed",
+        "category": "Architecture",
+        "date": "2021 - 2022"
       }
     ],
     "summary": {
       "total": "6",
-      "completed": "3",
+      "completed": "5",
       "labels": {
         "totalAchievements": "Total Achievements",
         "completed": "Completed", 
@@ -325,8 +330,8 @@
 
   "contact": {
     "title": "Let's Work Together!",
-    "description": "Have a project in mind? Let's talk and make it reality ⚡",
-    "formTitle": "📧 Send me a Message",
+    "description": "Have a project in mind? Let's talk and make it happen. ⚡",
+    "formTitle": "Send Me a Message",
     "successMessage": "✅ Message sent successfully! I'll contact you soon.",
     "fields": {
       "name": "Name *",
@@ -335,7 +340,7 @@
       "message": "Message *"
     },
     "placeholders": {
-      "name": "Your name",
+      "name": "Your full name",
       "email": "your@email.com",
       "subject": "How can I help you?",
       "message": "Tell me about your project..."
@@ -381,7 +386,7 @@
   ],
 
   "footer": {
-    "copyright": "© 2025 Jonar Andrés | Gamer-Tech Style ⚡ Inspired by Samsung",
+    "copyright": "© 2025 Jonar Andrés | Cooperativa de Colombia University",
     "developedWith": "Developed with Next.js and Tailwind CSS"
   }
 }
