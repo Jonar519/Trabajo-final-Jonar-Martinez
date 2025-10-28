@@ -14,7 +14,7 @@
 
   "hero": {
     "title": "Welcome to My Portfolio",
-    "description": "Software Engineering student passionate about creating unique digital experiences. Specialized in frontend web development, functional interface design, and technological innovation to take ideas to the next level. ⚡",
+    "description": "Software Engineering student passionate about creating unique digital experiences. Specialized in frontend web development, functional interface design, and technological innovation to transform ideas into high-impact solutions. ⚡",
     "status": "Available for projects",
     "projectsCompleted": "+5 Projects completed",
     "ctaButton": "📄 Download CV"
@@ -22,7 +22,7 @@
 
   "about": {
     "title": "About Me",
-    "content": "I am a Software Engineering student focused on web application development, UX/UI design, and modern technologies like React, Next.js, and Tailwind CSS. I'm passionate about creating projects that combine creativity, functionality, and innovative style inspired by the gaming world.",
+    "content": "I am a Software Engineering student focused on web application development, UX/UI design, and modern technologies like React, Next.js, and Tailwind CSS. My passion lies in creating projects that integrate creativity, functionality, and an innovative approach inspired by the gaming world.",
     "stats": [
       {
         "value": "+5",
@@ -31,7 +31,7 @@
       },
       {
         "value": "2+", 
-        "label": "Years of Practice",
+        "label": "Years of Experience",
         "color": "cyan"
       }
     ],
@@ -108,7 +108,7 @@
   },
 
   "experience": {
-    "title": "My Journey",
+    "title": "My Professional Journey",
     "experiences": [
       {
         "title": "Dairy Technician",
@@ -116,19 +116,19 @@
         "period": "2018 - 2020",
         "description": "Development and production of various dairy products for commercialization within the educational institution.",
         "achievements": [
-          "Led the first-year technical program group",
+          "Led the first-year group of the technical program",
           "Participation in dairy product fairs", 
-          "Municipal recognition for product quality"
+          "Municipal recognition for the quality of developed products"
         ]
       },
       {
         "title": "Architecture Student",
         "company": "Cesmag University",
         "period": "2021 - 2022",
-        "description": "Architecture studies that developed my creativity, design sense, and spatial understanding.", 
+        "description": "Architecture training that developed my creativity, design sense, and spatial understanding.", 
         "achievements": [
           "Development of 5+ architectural projects",
-          "Participation in Architecture Expo",
+          "Participation in Expoarquitectura",
           "Collaborative work in academic teams"
         ]
       },
@@ -140,7 +140,7 @@
         "achievements": [
           "Academic average 4.3/4.5",
           "Development of outstanding projects", 
-          "Active participation in tech seminars"
+          "Active participation in technology seminars"
         ]
       }
     ],
@@ -152,13 +152,13 @@
   },
 
   "projects": {
-    "title": "My Projects",
+    "title": "My Featured Projects",
     "description": "Explore some of my projects developed with modern technologies. You can discover more by visiting my GitHub profile. Click and check them out!",
     "projects": [
       {
         "id": 1,
         "title": "Personal Portfolio",
-        "description": "Personal portfolio developed with Next.js, Tailwind CSS and TypeScript. Modern, responsive design with gamer-tech theme.",
+        "description": "Personal portfolio developed with Next.js, Tailwind CSS, and TypeScript. Modern, responsive design with gamer-tech theme.",
         "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "React"],
         "image": "/proyecto1.jpg",
         "demoUrl": "https://example-portfolio-bay.vercel.app/es", 
@@ -168,7 +168,7 @@
       {
         "id": 2,
         "title": "Responsive Design",
-        "description": "Fully responsive website implementing CSS Grid, Flexbox best practices and adaptive design.",
+        "description": "Website with fully responsive design implementing CSS Grid, Flexbox, and adaptive design best practices.",
         "technologies": ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
         "image": "/proyecto2.jpg",
         "demoUrl": "https://responsive-design-6xpt.vercel.app/",
@@ -187,8 +187,8 @@
       },
       {
         "id": 4,
-        "title": "Ticket System", 
-        "description": "Web application for ticket management with intuitive interface and complete administration features.",
+        "title": "Ticket Management System", 
+        "description": "Web application for ticket management with intuitive interface and complete administration functionalities.",
         "technologies": ["React", "CSS3", "JavaScript", "Vercel"],
         "image": "/proyecto4.jpg",
         "demoUrl": "https://boleto-eight.vercel.app/",
@@ -219,34 +219,34 @@
     "testimonials": [
       {
         "id": 1,
-        "name": "Person 1",
-        "role": "CEO at Tech Company",
-        "image": "/testimonio1.jpg",
-        "text": "The work reflects professionalism, innovation and unique style. Highly recommended.",
+        "name": "Nicolás Alejandro García Pazmiño",
+        "role": "Programming Colleague",
+        "image": "/testimonio1.jpeg",
+        "text": "Collaborative, supportive, and committed professional, with strong orientation towards teamwork and achieving common goals.", 
         "rating": 5
       },
       {
         "id": 2,
-        "name": "Person 2", 
-        "role": "Project Lead",
-        "image": "/testimonio2.jpg",
-        "text": "Excellent developer, always delivers quality and meets established deadlines.",
+        "name": "Juan Camilo Martínez Bedoya", 
+        "role": "Programming Colleague",
+        "image": "/testimonio2.jpeg",
+        "text": "Distinguished by dedication and commitment to achieving objectives. Consistently meets established deadlines, demonstrates flexibility in facing challenges, and ability to adapt to different roles and work environments.",
         "rating": 5
       },
       {
         "id": 3,
-        "name": "Person 3",
-        "role": "Freelance Client",
-        "image": "/testimonio3.jpg",
-        "text": "Exceeded all my expectations. The project turned out better than I imagined.",
+        "name": "John Fernando Hernández Alvarado",
+        "role": "Political Leader",
+        "image": "/testimonio3.jpeg",
+        "text": "Committed, responsible professional oriented towards excellence. Stands out for leadership, organizational skills, and service vocation, always generating positive results in their environment.",
         "rating": 5
       },
       {
         "id": 4,
-        "name": "Person 4",
-        "role": "Developer Colleague",
-        "image": "/testimonio4.jpg",
-        "text": "Great team player, always willing to help and share knowledge.",
+        "name": "Santiago Alexander Álvarez Muñoz",
+        "role": "Architect",
+        "image": "/testimonio4.jpeg",
+        "text": "Responsible, innovative, and committed professional, with great ability to develop efficient solutions and collaborate in multidisciplinary teams.",
         "rating": 5
       }
     ]
@@ -258,7 +258,7 @@
     "achievements": [
       {
         "id": 1,
-        "title": "Municipal Math Competition",
+        "title": "Municipal Mathematics Competition",
         "description": "First place in municipal mathematics competition",
         "icon": "🏆",
         "level": "Advanced",
@@ -269,7 +269,7 @@
       {
         "id": 2,
         "title": "Zonal Municipal Soccer Championship",
-        "description": "Second place in zonal phase championship sub-15 held in Imués municipality",
+        "description": "Second place in sub-15 zonal phase championship held in Imués municipality",
         "icon": "🥈",
         "level": "Epic", 
         "status": "✅ Completed",
@@ -279,7 +279,7 @@
       {
         "id": 3,
         "title": "Zonal Phase Inter-school Championship",
-        "description": "Third place in zonal phase inter-school championship sub-17", 
+        "description": "Third place in sub-17 zonal phase inter-school championship", 
         "icon": "🥉",
         "level": "Advanced",
         "status": "✅ Completed",
@@ -308,8 +308,8 @@
       },
       {
         "id": 6,
-        "title": "Architecture Studies",
-        "description": "Two years of Architecture studies, developing understanding of design, form, and color harmony. This experience strengthened my aesthetic vision and ability to create balanced, functional interfaces.",
+        "title": "Architecture Training",
+        "description": "Architecture studies for two years, developing understanding of design, form, and color harmony. This experience strengthened my aesthetic vision and ability to create balanced and functional interfaces.",
         "icon": "👷‍♂️",
         "level": "Advanced",
         "status": "Not Completed",
@@ -330,7 +330,7 @@
 
   "contact": {
     "title": "Let's Work Together!",
-    "description": "Have a project in mind? Let's talk and make it happen. ⚡",
+    "description": "Do you have a project in mind? Let's talk and make it happen. ⚡",
     "formTitle": "Send Me a Message",
     "successMessage": "✅ Message sent successfully! I'll contact you soon.",
     "fields": {

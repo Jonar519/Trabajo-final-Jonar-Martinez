@@ -13,8 +13,8 @@
   },
 
   "hero": {
-    "title": "Bienvenido a mi Portafolio",
-    "description": "Estudiante de Ingeniería de Software apasionado por crear experiencias digitales únicas. Especializado en desarrollo web frontend, diseño de interfaces funcionales e innovación tecnológica para llevar ideas al siguiente nivel. ⚡",
+    "title": "Bienvenido a Mi Portafolio",
+    "description": "Estudiante de Ingeniería de Software apasionado por crear experiencias digitales únicas. Especializado en desarrollo web frontend, diseño de interfaces funcionales e innovación tecnológica para transformar ideas en soluciones de alto impacto. ⚡",
     "status": "Disponible para proyectos",
     "projectsCompleted": "+5 Proyectos completados",
     "ctaButton": "📄 Descargar CV"
@@ -22,7 +22,7 @@
 
   "about": {
     "title": "Acerca de Mí",
-    "content": "Soy estudiante de Ingeniería de Software con enfoque en desarrollo de aplicaciones web, diseño UX/UI y tecnologías modernas como React, Next.js y Tailwind CSS. Me apasiona crear proyectos que combinen creatividad, funcionalidad y un estilo innovador inspirado en el mundo gamer.",
+    "content": "Soy estudiante de Ingeniería de Software con enfoque en desarrollo de aplicaciones web, diseño UX/UI y tecnologías modernas como React, Next.js y Tailwind CSS. Mi pasión radica en crear proyectos que integren creatividad, funcionalidad y un enfoque innovador inspirado en el mundo gamer.",
     "stats": [
       {
         "value": "+5",
@@ -31,7 +31,7 @@
       },
       {
         "value": "2+", 
-        "label": "Años de Práctica",
+        "label": "Años de Experiencia",
         "color": "cyan"
       }
     ],
@@ -108,7 +108,7 @@
   },
 
   "experience": {
-    "title": "Mi Trayectoria",
+    "title": "Mi Trayectoria Profesional",
     "experiences": [
       {
         "title": "Técnico en Lácteos",
@@ -152,7 +152,7 @@
   },
 
   "projects": {
-    "title": "Mis Proyectos",
+    "title": "Mis Proyectos Destacados",
     "description": "Explora algunos de mis proyectos desarrollados con tecnologías modernas. Puedes descubrir más visitando mi perfil de GitHub. ¡Haz clic y conócelos!",
     "projects": [
       {
@@ -187,7 +187,7 @@
       },
       {
         "id": 4,
-        "title": "Sistema de Boletos", 
+        "title": "Sistema de Gestión de Boletos", 
         "description": "Aplicación web para gestión de boletos con interfaz intuitiva y funcionalidades completas de administración.",
         "technologies": ["React", "CSS3", "JavaScript", "Vercel"],
         "image": "/proyecto4.jpg",
@@ -219,34 +219,34 @@
     "testimonials": [
       {
         "id": 1,
-        "name": "Persona 1",
-        "role": "CEO en Empresa Tech",
-        "image": "/testimonio1.jpg",
-        "text": "El trabajo refleja profesionalismo, innovación y un estilo único. Muy recomendable.",
+        "name": "Nicolás Alejandro García Pazmiño",
+        "role": "Colega de Programación",
+        "image": "/testimonio1.jpeg",
+        "text": "Profesional colaborativo, solidario y comprometido, con una fuerte orientación al trabajo en equipo y al logro de objetivos comunes.", 
         "rating": 5
       },
       {
         "id": 2,
-        "name": "Persona 2", 
-        "role": "Líder de Proyecto",
-        "image": "/testimonio2.jpg",
-        "text": "Excelente desarrollador, siempre entrega calidad y cumple con los plazos establecidos.",
+        "name": "Juan Camilo Martínez Bedoya", 
+        "role": "Colega de Programación",
+        "image": "/testimonio2.jpeg",
+        "text": "Se distingue por su dedicación y compromiso con el logro de objetivos. Cumple de manera constante con los plazos establecidos, demuestra flexibilidad ante los desafíos y capacidad para adaptarse a distintos roles y entornos laborales.",
         "rating": 5
       },
       {
         "id": 3,
-        "name": "Persona 3",
-        "role": "Cliente Freelance",
-        "image": "/testimonio3.jpg",
-        "text": "Superó todas mis expectativas. El proyecto quedó mejor de lo que imaginaba.",
+        "name": "John Fernando Hernández Alvarado",
+        "role": "Líder Político",
+        "image": "/testimonio3.jpeg",
+        "text": "Profesional comprometido, responsable y orientado a la excelencia. Destaca por su liderazgo, capacidad de organización y vocación de servicio, generando siempre resultados positivos en su entorno.",
         "rating": 5
       },
       {
         "id": 4,
-        "name": "Persona 4",
-        "role": "Colega Desarrollador",
-        "image": "/testimonio4.jpg",
-        "text": "Gran compañero de equipo, siempre dispuesto a ayudar y compartir conocimiento.",
+        "name": "Santiago Alexander Álvarez Muñoz",
+        "role": "Arquitecto",
+        "image": "/testimonio4.jpeg",
+        "text": "Profesional responsable, innovador y comprometido, con gran capacidad para desarrollar soluciones eficientes y colaborar en equipos multidisciplinarios.",
         "rating": 5
       }
     ]
