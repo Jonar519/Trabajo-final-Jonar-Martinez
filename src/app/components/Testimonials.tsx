@@ -15,24 +15,30 @@ export default function Testimonials() {
   const { isVisible: isTestimonialVisible, elementRef: testimonialRef } = useScrollAnimation(0.2);
   const { isVisible: isControlsVisible, elementRef: controlsRef } = useScrollAnimation(0.3);
 
-  const changeTestimonial = (index: number) => {
-    if (isTransitioning || index === activeTestimonio) return;
-    
-    setIsTransitioning(true);
-    setActiveTestimonio(index);
-    setTimeout(() => setIsTransitioning(false), 500);
-  };
+  const totalTestimonials = testimonials.testimonials.length;
 
   const nextTestimonial = () => {
     if (isTransitioning) return;
-    const nextIndex = (activeTestimonio + 1) % testimonials.testimonials.length;
-    changeTestimonial(nextIndex);
+    
+    setIsTransitioning(true);
+    setActiveTestimonio((prev) => (prev + 1) % totalTestimonials);
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   const prevTestimonial = () => {
     if (isTransitioning) return;
-    const prevIndex = (activeTestimonio - 1 + testimonials.testimonials.length) % testimonials.testimonials.length;
-    changeTestimonial(prevIndex);
+    
+    setIsTransitioning(true);
+    setActiveTestimonio((prev) => (prev - 1 + totalTestimonials) % totalTestimonials);
+    setTimeout(() => setIsTransitioning(false), 600);
+  };
+
+  const goToTestimonial = (index: number) => {
+    if (isTransitioning || index === activeTestimonio) return;
+    
+    setIsTransitioning(true);
+    setActiveTestimonio(index);
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
   return (
@@ -52,45 +58,58 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonio principal con animación y transición suave */}
+        {/* Testimonio principal con transición suave */}
         <div 
           ref={testimonialRef}
           className={`reveal-text ${isTestimonialVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isTestimonialVisible ? '0.2s' : '0s' }}
         >
-          <div className="bg-gray-900/50 border border-amber-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-sm shadow-2xl transition-all duration-500">
-            <div className="text-center mb-6">
-              <div className="flex justify-center mb-4">
-                <Image
-                  src={testimonials.testimonials[activeTestimonio].image}
-                  alt={testimonials.testimonials[activeTestimonio].name}
-                  width={80}
-                  height={80}
-                  className="rounded-full border-2 border-amber-400 shadow-lg transition-all duration-500"
-                />
-              </div>
-              
-              <div className="flex justify-center mb-3">
-                {[...Array(testimonials.testimonials[activeTestimonio].rating)].map((_, i) => (
-                  <span key={i} className="text-amber-400 text-xl">★</span>
-                ))}
-              </div>
-              
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 transition-all duration-500">
-                {testimonials.testimonials[activeTestimonio].name}
-              </h3>
-              <p className="text-amber-300 text-base sm:text-lg mb-4 transition-all duration-500">
-                {testimonials.testimonials[activeTestimonio].role}
-              </p>
-            </div>
+          <div className="relative h-[500px]">
+            {testimonials.testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className={`absolute inset-0 transition-all duration-600 ease-out ${
+                  index === activeTestimonio
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-10 scale-95 pointer-events-none"
+                }`}
+              >
+                <div className="bg-gray-900/50 border border-amber-500/30 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl h-full">
+                  <div className="text-center mb-8">
+                    <div className="flex justify-center mb-6">
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={80}
+                        height={80}
+                        className="rounded-full border-2 border-amber-400 shadow-lg transition-transform duration-600"
+                      />
+                    </div>
+                    
+                    <div className="flex justify-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-amber-400 text-2xl">★</span>
+                      ))}
+                    </div>
+                    
+                    <h3 className="text-3xl font-bold text-white mb-2 transition-all duration-600">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-amber-300 text-lg mb-6 transition-all duration-600">
+                      {testimonial.role}
+                    </p>
+                  </div>
 
-            <div className="relative">
-              <div className="text-amber-400 text-4xl sm:text-6xl absolute -top-4 -left-2 sm:-top-8 sm:-left-4 opacity-20 transition-all duration-500">&quot;</div>
-              <p className="text-gray-200 text-lg sm:text-xl leading-relaxed text-center italic relative z-10 transition-all duration-500 min-h-[120px] flex items-center justify-center">
-                {testimonials.testimonials[activeTestimonio].text}
-              </p>
-              <div className="text-amber-400 text-4xl sm:text-6xl absolute -bottom-4 -right-2 sm:-bottom-8 sm:-right-4 opacity-20 transition-all duration-500">&quot;</div>
-            </div>
+                  <div className="relative">
+                    <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20 transition-all duration-600">&quot;</div>
+                    <p className="text-gray-200 text-xl sm:text-2xl leading-relaxed text-center italic relative z-10 transition-all duration-600">
+                      {testimonial.text}
+                    </p>
+                    <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20 transition-all duration-600">&quot;</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -100,24 +119,26 @@ export default function Testimonials() {
           className={`reveal-text ${isControlsVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isControlsVisible ? '0.3s' : '0s' }}
         >
-          <div className="flex justify-between items-center mt-6 sm:mt-8">
+          <div className="flex justify-between items-center mt-8">
             <button
               onClick={prevTestimonial}
               disabled={isTransitioning}
-              className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
-                isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+              className={`px-6 py-3 text-base bg-amber-600 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                isTransitioning 
+                  ? "opacity-50 cursor-not-allowed" 
+                  : "hover:bg-amber-500 hover:scale-105"
               }`}
             >
-              ◀ <span className="hidden sm:inline">Anterior</span>
+              ◀ Anterior
             </button>
 
-            <div className="flex gap-1 sm:gap-2">
+            <div className="flex gap-2">
               {testimonials.testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => changeTestimonial(index)}
+                  onClick={() => goToTestimonial(index)}
                   disabled={isTransitioning}
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === activeTestimonio
                       ? "bg-amber-400 scale-125 shadow-[0_0_10px_rgba(245,158,11,0.8)]"
                       : "bg-amber-600 hover:bg-amber-500"
@@ -129,17 +150,19 @@ export default function Testimonials() {
             <button
               onClick={nextTestimonial}
               disabled={isTransitioning}
-              className={`px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
-                isTransitioning ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+              className={`px-6 py-3 text-base bg-amber-600 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
+                isTransitioning 
+                  ? "opacity-50 cursor-not-allowed" 
+                  : "hover:bg-amber-500 hover:scale-105"
               }`}
             >
-              <span className="hidden sm:inline">Siguiente</span> ▶
+              Siguiente ▶
             </button>
           </div>
 
           {/* Contador */}
-          <div className="text-center mt-4">
-            <span className="text-amber-400 text-sm sm:text-base">
+          <div className="text-center mt-6">
+            <span className="text-amber-400 text-base">
               {activeTestimonio + 1} / {testimonials.testimonials.length}
             </span>
           </div>
