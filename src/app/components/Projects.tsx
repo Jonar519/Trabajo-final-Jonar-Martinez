@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTheme } from '../contexts/ThemeContext';
 import FloatingParticles from "./FloatingParticles";
 
 export default function Projects() {
@@ -11,6 +12,7 @@ export default function Projects() {
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const { content } = useContent();
   const { projects } = content;
+  const { resolvedTheme } = useTheme();
 
   const { isVisible: isTitleVisible, elementRef: titleRef } = useScrollAnimation();
   const { isVisible: isCarouselVisible, elementRef: carouselRef } = useScrollAnimation(0.2);
@@ -36,7 +38,7 @@ export default function Projects() {
     
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 800); // Coincidir con la duración de la animación
+    }, 800);
   };
 
   const nextProject = () => {
@@ -47,12 +49,9 @@ export default function Projects() {
     goToProject((activeIndex - 1 + totalProjects) % totalProjects);
   };
 
-  // Función para calcular la posición de cada proyecto - MEJORADA CON TRANSICIONES SUAVES
   const getProjectPosition = (index: number) => {
-    // Calcular la distancia desde el proyecto activo
     let distance = index - activeIndex;
     
-    // Ajustar la distancia para el wrap around
     if (distance > totalProjects / 2) {
       distance = distance - totalProjects;
     } else if (distance < -totalProjects / 2) {
@@ -61,7 +60,6 @@ export default function Projects() {
 
     const absDistance = Math.abs(distance);
 
-    // Proyecto activo
     if (distance === 0) {
       return {
         transform: "translateX(0) scale(1) rotateY(0deg)",
@@ -73,7 +71,6 @@ export default function Projects() {
       };
     }
 
-    // Proyectos a la izquierda
     if (distance < 0) {
       const translateX = -Math.min(280 + absDistance * 60, 500);
       const scale = Math.max(0.8 - absDistance * 0.15, 0.4);
@@ -91,7 +88,6 @@ export default function Projects() {
       };
     }
 
-    // Proyectos a la derecha
     if (distance > 0) {
       const translateX = Math.min(280 + absDistance * 60, 500);
       const scale = Math.max(0.8 - absDistance * 0.15, 0.4);
@@ -110,18 +106,16 @@ export default function Projects() {
     }
   };
 
-  // Ocultar proyectos que están muy lejos
   const shouldShowProject = (index: number) => {
     let distance = index - activeIndex;
     
-    // Ajustar la distancia para el wrap around
     if (distance > totalProjects / 2) {
       distance = distance - totalProjects;
     } else if (distance < -totalProjects / 2) {
       distance = distance + totalProjects;
     }
 
-    return Math.abs(distance) <= 2; // Mostrar solo 2 proyectos a cada lado
+    return Math.abs(distance) <= 2;
   };
 
   return (
@@ -129,7 +123,7 @@ export default function Projects() {
       {/* Partículas flotantes */}
       <FloatingParticles />
 
-      {/* Título con animación - CORREGIDO PARA "PROYECTOS" */}
+      {/* Título con animación */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
@@ -188,14 +182,20 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      {/* Contenido - TECNOLOGÍAS MEJORADAS */}
+                      {/* Contenido - TÍTULO CORREGIDO PARA MODO CLARO */}
                       <div className="p-6">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+                        {/* Título del proyecto - NEGRO en modo claro, BLANCO en modo oscuro */}
+                        <h3 className={`text-2xl font-bold mb-2 ${
+                          resolvedTheme === 'light' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          {project.title}
+                        </h3>
+                        
                         <p className="text-gray-600 dark:text-gray-400 text-base mb-4 leading-relaxed">
                           {project.description}
                         </p>
 
-                        {/* Tecnologías - FONDO GRIS CLARO CON TEXTO NEGRO */}
+                        {/* Tecnologías */}
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.technologies.map((tech, techIndex) => (
                             <span
