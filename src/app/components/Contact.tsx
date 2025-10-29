@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -19,13 +20,12 @@ export default function Contact() {
 
   const { content } = useContent();
   const { contact, socialNetworks, cv } = content;
+  const { resolvedTheme } = useTheme();
 
-  // Usar el mismo hook de scroll animation del componente anterior
   const { isVisible: isTitleVisible, elementRef: titleRef } = useScrollAnimation();
   const { isVisible: isContentVisible, elementRef: contentRef } = useScrollAnimation(0.2);
   const { isVisible: isFormVisible, elementRef: formRef } = useScrollAnimation(0.3);
 
-  // Configuración de EmailJS - REEMPLAZA CON TUS DATOS REALES
   const EMAILJS_CONFIG = {
     SERVICE_ID: "protafolio_contact",
     TEMPLATE_ID: "template_pxdnma8",  
@@ -83,60 +83,72 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
-      {/* Fondo decorativo igual al componente anterior */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20"></div>
+    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black relative overflow-hidden">
+      {/* Fondo decorativo */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"></div>
       
-      {/* Título con animación wiper */}
+      {/* Título con animación */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent mb-4 relative z-10">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4 relative z-10">
           {contact.title}
         </h2>
-        <p className="text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
+        <p className="text-gray-600 dark:text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
           {contact.description}
         </p>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Contenido principal con animación wiper */}
+        {/* Contenido principal con animación */}
         <div 
           ref={contentRef}
           className={`reveal-text ${isContentVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isContentVisible ? '0.2s' : '0s' }}
         >
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Columna Izquierda - Información de Contacto */}
-            <div className="md:col-span-1 bg-gray-900/80 border border-indigo-500 rounded-xl p-6 shadow-[0_0_25px_rgba(99,102,241,0.3)] backdrop-blur-sm">
+            <div className="lg:col-span-1 bg-white dark:bg-gray-900 border-2 border-indigo-400 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
               <div className="text-center mb-6">
                 <Image
                   src="/perfil.jpeg"
                   alt="Foto de perfil"
                   width={120}
                   height={120}
-                  className="rounded-full border-4 border-indigo-400 mx-auto mb-4 shadow-[0_0_20px_rgba(99,102,241,0.5)]"
+                  className="rounded-full border-4 border-indigo-500 mx-auto mb-4 shadow-lg"
                 />
-                <h3 className="text-xl font-bold text-white">{content.site.author}</h3>
-                <p className="text-indigo-300 text-lg">{cv.position}</p>
+                {/* NOMBRE CORREGIDO - CONDICIONAL */}
+                <h3 
+                  className="text-xl font-bold mb-2"
+                  style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                >
+                  {content.site.author}
+                </h3>
+                <p className="text-indigo-600 dark:text-indigo-400 text-lg font-semibold">{cv.position}</p>
               </div>
 
               <div className="space-y-6">
-                {/* Contacto */}
+                {/* Contacto - TÍTULO CORREGIDO - CONDICIONAL */}
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <span className="text-cyan-400">📧</span> {cv.sections.contact}
+                  <h4 
+                    className="text-xl font-semibold mb-3 flex items-center gap-2"
+                    style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                  >
+                    <span className="text-cyan-600">📧</span> {cv.sections.contact}
                   </h4>
-                  <p className="text-gray-300 text-base mb-2">{content.site.email}</p>
-                  <p className="text-gray-300 text-base mb-2">{content.site.phone}</p>
-                  <p className="text-gray-300 text-base">{content.site.location}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base mb-2 font-medium">{content.site.email}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base mb-2 font-medium">{content.site.phone}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base font-medium">{content.site.location}</p>
                 </div>
 
-                {/* Redes Sociales */}
+                {/* Redes Sociales - TÍTULO CORREGIDO - CONDICIONAL */}
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <span className="text-cyan-400">🌐</span> {cv.sections.socialNetworks}
+                  <h4 
+                    className="text-xl font-semibold mb-3 flex items-center gap-2"
+                    style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                  >
+                    <span className="text-cyan-600">🌐</span> {cv.sections.socialNetworks}
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     {socialNetworks.map((social, index) => (
@@ -164,15 +176,18 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Idiomas */}
+                {/* Idiomas - TÍTULO CORREGIDO - CONDICIONAL */}
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    <span className="text-cyan-400">🗣️</span> {cv.sections.languages}
+                  <h4 
+                    className="text-xl font-semibold mb-3 flex items-center gap-2"
+                    style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                  >
+                    <span className="text-cyan-600">🗣️</span> {cv.sections.languages}
                   </h4>
                   {cv.languages.map((lang, index) => (
-                    <div key={index} className="mb-2">
-                      <p className="text-gray-300 text-base font-medium">{lang.language}</p>
-                      <p className="text-cyan-400 text-sm">{lang.level}</p>
+                    <div key={index} className="mb-3">
+                      <p className="text-gray-700 dark:text-gray-300 text-base font-semibold">{lang.language}</p>
+                      <p className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">{lang.level}</p>
                     </div>
                   ))}
                 </div>
@@ -180,27 +195,31 @@ export default function Contact() {
             </div>
 
             {/* Columna Derecha - Formulario de Contacto */}
-            <div className="md:col-span-2">
+            <div className="lg:col-span-2">
               <div 
                 ref={formRef}
                 className={`reveal-text ${isFormVisible ? 'revealed' : ''}`}
                 style={{ transitionDelay: isFormVisible ? '0.3s' : '0s' }}
               >
-                <div className="bg-gray-900/50 border-2 border-pink-500 rounded-2xl p-8 shadow-[0_0_40px_rgba(236,72,153,0.3)] backdrop-blur-sm">
-                  <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3 justify-center">
-                    <span className="text-pink-400">📧</span> {contact.formTitle}
+                <div className="bg-white dark:bg-gray-900 border-2 border-pink-500 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+                  {/* TÍTULO DEL FORMULARIO CORREGIDO - CONDICIONAL */}
+                  <h3 
+                    className="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-3 justify-center"
+                    style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                  >
+                    <span className="text-pink-500">📧</span> {contact.formTitle}
                   </h3>
 
                   {/* Mensaje de éxito */}
                   {isSubmitted && (
-                    <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-lg text-green-400 text-center text-base">
+                    <div className="mb-6 p-4 bg-green-100 dark:bg-green-500/20 border border-green-500 rounded-lg text-green-700 dark:text-green-400 text-center text-base font-medium">
                       {contact.successMessage}
                     </div>
                   )}
 
                   {/* Mensaje de error */}
                   {error && (
-                    <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-lg text-red-400 text-center text-base">
+                    <div className="mb-6 p-4 bg-red-100 dark:bg-red-500/20 border border-red-500 rounded-lg text-red-700 dark:text-red-400 text-center text-base font-medium">
                       {error}
                     </div>
                   )}
@@ -208,7 +227,12 @@ export default function Contact() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-white text-base font-medium mb-2">
+                        {/* LABEL NOMBRE CORREGIDO - CONDICIONAL */}
+                        <label 
+                          htmlFor="name" 
+                          className="block text-base font-semibold mb-2"
+                          style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                        >
                           {contact.fields.name}
                         </label>
                         <input
@@ -218,12 +242,17 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300 text-base"
+                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-gray-900 dark:text-white transition-all duration-300 text-base font-medium"
                           placeholder={contact.placeholders.name}
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-white text-base font-medium mb-2">
+                        {/* LABEL CORREO CORREGIDO - CONDICIONAL */}
+                        <label 
+                          htmlFor="email" 
+                          className="block text-base font-semibold mb-2"
+                          style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                        >
                           {contact.fields.email}
                         </label>
                         <input
@@ -233,14 +262,19 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300 text-base"
+                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-gray-900 dark:text-white transition-all duration-300 text-base font-medium"
                           placeholder={contact.placeholders.email}
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-white text-base font-medium mb-2">
+                      {/* LABEL ASUNTO CORREGIDO - CONDICIONAL */}
+                      <label 
+                        htmlFor="subject" 
+                        className="block text-base font-semibold mb-2"
+                        style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                      >
                         {contact.fields.subject}
                       </label>
                       <input
@@ -250,13 +284,18 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white transition-all duration-300 text-base"
+                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-gray-900 dark:text-white transition-all duration-300 text-base font-medium"
                         placeholder={contact.placeholders.subject}
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-white text-base font-medium mb-2">
+                      {/* LABEL MENSAJE CORREGIDO - CONDICIONAL */}
+                      <label 
+                        htmlFor="message" 
+                        className="block text-base font-semibold mb-2"
+                        style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                      >
                         {contact.fields.message}
                       </label>
                       <textarea
@@ -266,7 +305,7 @@ export default function Contact() {
                         onChange={handleChange}
                         required
                         rows={6}
-                        className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-white resize-none transition-all duration-300 text-base"
+                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-gray-900 dark:text-white resize-none transition-all duration-300 text-base font-medium"
                         placeholder={contact.placeholders.message}
                       />
                     </div>
@@ -274,7 +313,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 text-lg bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_25px_rgba(236,72,153,0.5)] flex items-center justify-center gap-2"
+                      className="w-full py-4 text-lg bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold rounded-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>

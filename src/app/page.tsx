@@ -1,6 +1,7 @@
 "use client";
 
 import { LanguageProvider } from './hooks/useLanguage';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -17,19 +18,21 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <LanguageProvider>
-      <main className="bg-black text-white font-[Poppins] selection:bg-green-500/30">
-        <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Hero />
-        <About />
-        <CV />
-        <Experience />
-        <Projects />
-        <Testimonials />
-        <Achievements />
-        <Contact />
-        <Footer />
-      </main>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <main className="bg-white dark:bg-black text-gray-900 dark:text-white font-[Poppins] selection:bg-green-500/30 transition-colors duration-300">
+          <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <Hero />
+          <About />
+          <CV />
+          <Experience />
+          <Projects />
+          <Testimonials />
+          <Achievements />
+          <Contact />
+          <Footer />
+        </main>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

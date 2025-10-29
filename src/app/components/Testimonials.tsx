@@ -4,12 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Testimonials() {
   const [activeTestimonio, setActiveTestimonio] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const { content } = useContent();
   const { testimonials } = content;
+  const { resolvedTheme } = useTheme();
 
   const { isVisible: isTitleVisible, elementRef: titleRef } = useScrollAnimation();
   const { isVisible: isTestimonialVisible, elementRef: testimonialRef } = useScrollAnimation(0.2);
@@ -42,7 +44,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-black">
+    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black">
       <div className="max-w-4xl mx-auto">
         {/* Título con animación */}
         <div 
@@ -53,7 +55,7 @@ export default function Testimonials() {
             {testimonials.title}
           </h2>
           
-          <p className="text-gray-400 text-xl text-center mb-12">
+          <p className="text-gray-600 dark:text-gray-400 text-xl text-center mb-12">
             {testimonials.description}
           </p>
         </div>
@@ -74,7 +76,7 @@ export default function Testimonials() {
                     : "opacity-0 translate-y-10 scale-95 pointer-events-none"
                 }`}
               >
-                <div className="bg-gray-900/50 border border-amber-500/30 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl h-full">
+                <div className="bg-gray-50/95 dark:bg-gray-900/50 border border-amber-500/30 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl h-full">
                   <div className="text-center mb-8">
                     <div className="flex justify-center mb-6">
                       <Image
@@ -92,17 +94,21 @@ export default function Testimonials() {
                       ))}
                     </div>
                     
-                    <h3 className="text-3xl font-bold text-white mb-2 transition-all duration-600">
+                    {/* NOMBRE CORREGIDO - CONDICIONAL PARA MODO CLARO/OSCURO */}
+                    <h3 
+                      className="text-3xl font-bold mb-2 transition-all duration-600"
+                      style={{ color: resolvedTheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)' }}
+                    >
                       {testimonial.name}
                     </h3>
-                    <p className="text-amber-300 text-lg mb-6 transition-all duration-600">
+                    <p className="text-amber-600 dark:text-amber-300 text-lg mb-6 transition-all duration-600">
                       {testimonial.role}
                     </p>
                   </div>
 
                   <div className="relative">
                     <div className="text-amber-400 text-6xl absolute -top-8 -left-4 opacity-20 transition-all duration-600">&quot;</div>
-                    <p className="text-gray-200 text-xl sm:text-2xl leading-relaxed text-center italic relative z-10 transition-all duration-600">
+                    <p className="text-gray-800 dark:text-gray-200 text-xl sm:text-2xl leading-relaxed text-center italic relative z-10 transition-all duration-600">
                       {testimonial.text}
                     </p>
                     <div className="text-amber-400 text-6xl absolute -bottom-8 -right-4 opacity-20 transition-all duration-600">&quot;</div>
@@ -162,7 +168,7 @@ export default function Testimonials() {
 
           {/* Contador */}
           <div className="text-center mt-6">
-            <span className="text-amber-400 text-base">
+            <span className="text-amber-600 dark:text-amber-400 text-base">
               {activeTestimonio + 1} / {testimonials.testimonials.length}
             </span>
           </div>

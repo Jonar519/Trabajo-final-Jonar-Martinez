@@ -14,7 +14,6 @@ function FloatingParticles() {
   }>>([]);
 
   useEffect(() => {
-    // Solo se ejecuta en el cliente
     const newParticles = [...Array(15)].map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
@@ -25,7 +24,6 @@ function FloatingParticles() {
   }, []);
 
   if (particles.length === 0) {
-    // Render vacío durante SSR
     return null;
   }
 
@@ -67,7 +65,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-24 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 bg-gradient-to-b from-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black relative overflow-hidden"
     >
       {/* Efectos de fondo sutiles */}
       <div className="absolute inset-0 opacity-20">
@@ -93,7 +91,7 @@ export default function Hero() {
           className={`reveal-text ${isDescVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isDescVisible ? '0.2s' : '0s' }}
         >
-          <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
             {hero.description}
           </p>
         </div>
@@ -104,7 +102,7 @@ export default function Hero() {
           className={`reveal-text ${isStatsVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isStatsVisible ? '0.4s' : '0s' }}
         >
-          <div className="flex justify-center gap-6 mb-8 text-base text-gray-400">
+          <div className="flex justify-center gap-6 mb-8 text-base text-gray-500 dark:text-gray-400">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span>{hero.status}</span>

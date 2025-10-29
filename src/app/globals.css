@@ -12,17 +12,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Estilos base para light mode */
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Estilos base para dark mode */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Animación para partículas flotantes */
@@ -71,4 +77,355 @@ body {
 .reveal-text.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Transiciones suaves para todos los elementos */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== CORRECCIONES ESPECÍFICAS PARA NAVBAR ===== */
+
+/* Asegurar que el navbar sea blanco en modo claro */
+.light nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Usar selectores de atributo para clases con barras */
+.light nav[class*="bg-white"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Textos del navbar en modo claro */
+.light nav .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light nav .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+/* Borders del navbar en modo claro */
+.light nav .border-gray-200 {
+  border-color: #e5e7eb !important;
+}
+
+/* Fondos hover del navbar en modo claro */
+.light nav .hover\:bg-gray-100:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Menú móvil en modo claro */
+.light .md\:hidden[class*="bg-white"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+.light .md\:hidden .bg-green-400\/20 {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+}
+
+.light .md\:hidden .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light .md\:hidden .hover\:bg-gray-100:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* ===== MEJORAS ESPECÍFICAS PARA MODO LIGHT ===== */
+
+/* Fondos para modo light */
+.light .bg-black {
+  background-color: #ffffff !important;
+}
+
+.light .bg-gray-900 {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-gray-800 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Textos para modo light - MÁS OSCUROS */
+.light .text-gray-300 {
+  color: #374151 !important;
+}
+
+.light .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+.light .text-white {
+  color: #171717 !important;
+}
+
+.light .text-gray-200 {
+  color: #1f2937 !important;
+}
+
+/* Borders para modo light */
+.light .border-gray-700 {
+  border-color: #d1d5db !important;
+}
+
+.light .border-gray-800 {
+  border-color: #d1d5db !important;
+}
+
+/* Sombras y efectos para modo light */
+.light .shadow-\[0_0_40px_rgba\(168\,85\,247\,0\.3\)\] {
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.15) !important;
+}
+
+.light .shadow-\[0_0_25px_rgba\(34\,211\,238\,0\.3\)\] {
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.15) !important;
+}
+
+.light .shadow-\[0_0_35px_rgba\(34\,197\,94\,0\.7\)\] {
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.4) !important;
+}
+
+.light .shadow-\[0_0_40px_rgba\(236\,72\,153\,0\.3\)\] {
+  box-shadow: 0 0 40px rgba(236, 72, 153, 0.15) !important;
+}
+
+.light .shadow-\[0_0_25px_rgba\(59\,130\,246\,0\.7\)\] {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Gradientes de fondo para modo light */
+.light .bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, #ffffff, #f8fafc, #ffffff) !important;
+}
+
+.light .bg-gradient-to-br {
+  background-image: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%) !important;
+}
+
+/* Efectos de backdrop para modo light */
+.light .backdrop-blur-sm {
+  backdrop-filter: blur(8px) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.light .bg-gray-900\/50 {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+}
+
+.light .bg-gray-900\/80 {
+  background-color: rgba(248, 250, 252, 0.98) !important;
+}
+
+.light .bg-black\/50 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Cards y containers */
+.light .bg-gray-800\/50 {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+}
+
+.light .bg-gray-900\/80 {
+  background-color: rgba(248, 250, 252, 0.98) !important;
+}
+
+/* Efectos hover para modo light */
+.light .hover\:bg-gray-800\/50:hover {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+}
+
+/* Placeholder text más visible */
+.light ::placeholder {
+  color: #6b7280 !important;
+}
+
+/* ===== CORRECCIONES ESPECÍFICAS PARA COMPONENTES ===== */
+
+/* Testimonios - Textos más oscuros */
+.light .text-gray-800 {
+  color: #1f2937 !important;
+}
+
+/* Habilidades Técnicas - Categorías más visibles */
+.light .text-cyan-300 {
+  color: #0891b2 !important;
+}
+
+.light .bg-cyan-500\/20 {
+  background-color: rgba(6, 182, 212, 0.2) !important;
+}
+
+.light .border-cyan-500\/30 {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+}
+
+.light .text-cyan-700 {
+  color: #0e7490 !important;
+}
+
+.light .bg-cyan-100 {
+  background-color: #cffafe !important;
+}
+
+/* Contacto - Mejor contraste */
+.light .bg-white\/50 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.light .bg-white\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Proyectos - Mejor visibilidad */
+.light .text-purple-300 {
+  color: #7c3aed !important;
+}
+
+.light .bg-purple-500\/20 {
+  background-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.light .border-purple-500\/30 {
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+/* Experiencia - Logros más visibles */
+.light .text-gray-300 {
+  color: #374151 !important;
+}
+
+.light .bg-gray-800\/50 {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+}
+
+/* Logros Personales - Mejor contraste */
+.light .text-cyan-400 {
+  color: #22d3ee !important;
+}
+
+.light .text-green-400 {
+  color: #34d399 !important;
+}
+
+/* Hero Section - Mejor contraste */
+.light .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* ===== CORRECCIONES PARA BOTONES Y ELEMENTOS INTERACTIVOS ===== */
+
+.light .bg-gray-200 {
+  background-color: #e5e7eb !important;
+}
+
+.light .border-gray-300 {
+  border-color: #d1d5db !important;
+}
+
+.light .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light .hover\:bg-gray-300:hover {
+  background-color: #d1d5db !important;
+}
+
+/* ===== CORRECCIONES PARA GRADIENTES ESPECÍFICOS ===== */
+
+.light .from-purple-900\/20 {
+  background-image: linear-gradient(to right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1)) !important;
+}
+
+.light .to-pink-900\/20 {
+  background-image: linear-gradient(to right, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1)) !important;
+}
+
+.light .from-purple-50 {
+  background-color: #faf5ff !important;
+}
+
+.light .to-pink-50 {
+  background-color: #fdf2f8 !important;
+}
+
+/* ===== CORRECCIONES PARA EFECTOS DE TEXTO ===== */
+
+.light .text-transparent {
+  color: transparent !important;
+}
+
+/* Asegurar que los textos con gradiente se mantengan */
+.light .bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* ===== CORRECCIONES PARA SCROLLBAR ===== */
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* ===== CORRECCIONES ESPECÍFICAS PARA CLASES CON BARRAS ===== */
+
+/* Usar selectores de atributo para todas las clases problemáticas */
+.light [class*="bg-white"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.light [class*="dark:bg-gray-900"] {
+  background-color: #f8fafc !important;
+}
+
+.light [class*="dark:bg-black"] {
+  background-color: #ffffff !important;
+}
+
+.light [class*="dark:text-gray-300"] {
+  color: #374151 !important;
+}
+
+.light [class*="dark:text-gray-400"] {
+  color: #4b5563 !important;
+}
+
+.light [class*="dark:border-gray-700"] {
+  border-color: #d1d5db !important;
+}
+
+.light [class*="dark:border-gray-800"] {
+  border-color: #d1d5db !important;
+}
+
+.light [class*="dark:bg-gradient-to-b"] {
+  background-image: linear-gradient(to bottom, #ffffff, #f8fafc, #ffffff) !important;
+}
+
+.light [class*="dark:placeholder-gray-400"]::placeholder {
+  color: #6b7280 !important;
+}
+
+.light [class*="dark:hover:bg-gray-800"]:hover {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+}
+
+.light [class*="dark:text-gray-200"] {
+  color: #1f2937 !important;
+}
+
+.light [class*="dark:bg-gray-900"] {
+  background-color: #f8fafc !important;
+}
+
+.light [class*="dark:text-gray-300"] {
+  color: #374151 !important;
 }
