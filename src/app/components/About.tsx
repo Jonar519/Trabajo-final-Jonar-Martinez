@@ -16,12 +16,12 @@ export default function About() {
   return (
     <section
       id="acerca"
-      className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 max-w-6xl mx-auto relative overflow-hidden"
+      className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 max-w-6xl mx-auto relative overflow-hidden bg-transparent"
     >
       {/* Partículas flotantes */}
       <FloatingParticles />
 
-      <div className="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center bg-transparent">
         {/* Imagen con animación desde la izquierda */}
         <div 
           ref={imageRef}
@@ -46,7 +46,7 @@ export default function About() {
           ref={contentRef}
           className={`reveal-text ${isContentVisible ? 'revealed' : ''}`}
         >
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left bg-transparent">
             {/* Título corregido */}
             <h2 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-6 pb-1 leading-tight">
               {about.title}
@@ -70,7 +70,7 @@ export default function About() {
                       stat.color === 'green' 
                         ? 'border-green-500/30 hover:border-green-400' 
                         : 'border-cyan-500/30 hover:border-cyan-400'
-                    } transition-colors`}
+                    } transition-colors backdrop-blur-sm`}
                   >
                     <div className={`text-3xl font-bold ${
                       stat.color === 'green' ? 'text-green-400' : 'text-cyan-400'
@@ -89,7 +89,7 @@ export default function About() {
               className={`reveal-text ${isFocusVisible ? 'revealed' : ''}`}
               style={{ transitionDelay: isFocusVisible ? '0.3s' : '0s' }}
             >
-              <div className="mb-8 p-6 bg-gray-900/50 rounded-xl border border-gray-700">
+              <div className="mb-8 p-6 bg-gray-900/50 rounded-xl border border-gray-700 backdrop-blur-sm">
                 <h3 className="text-xl font-semibold mb-3 flex items-center gap-2 justify-center md:justify-start">
                   {about.focus.title}
                 </h3>

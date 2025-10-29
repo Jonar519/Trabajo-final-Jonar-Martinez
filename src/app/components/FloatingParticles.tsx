@@ -13,7 +13,7 @@ export default function FloatingParticles() {
   }>>([]);
 
   useEffect(() => {
-    const newParticles = [...Array(25)].map(() => ({
+    const newParticles = [...Array(35)].map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       delay: `${Math.random() * 8}s`,
@@ -29,7 +29,7 @@ export default function FloatingParticles() {
   }
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-transparent">
       {particles.map((particle, i) => (
         <div
           key={i}
@@ -47,7 +47,7 @@ export default function FloatingParticles() {
       ))}
       
       {/* Estrellas grandes ocasionales */}
-      {[...Array(5)].map((_, i) => (
+      {[...Array(8)].map((_, i) => (
         <div
           key={`star-${i}`}
           className="absolute rounded-full bg-white animate-pulse"
@@ -59,6 +59,23 @@ export default function FloatingParticles() {
             opacity: 0.6,
             animationDelay: `${i * 2}s`,
             animationDuration: '3s'
+          }}
+        />
+      ))}
+
+      {/* Partículas adicionales para móvil */}
+      {[...Array(15)].map((_, i) => (
+        <div
+          key={`mobile-particle-${i}`}
+          className="absolute rounded-full bg-cyan-300 animate-float md:hidden"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            width: '1px',
+            height: '1px',
+            opacity: 0.2 + Math.random() * 0.3,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${10 + Math.random() * 10}s`
           }}
         />
       ))}

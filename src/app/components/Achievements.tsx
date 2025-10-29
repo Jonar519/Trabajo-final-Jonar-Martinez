@@ -11,7 +11,7 @@ export default function Achievements() {
   const { isVisible: isSummaryVisible, elementRef: summaryRef } = useScrollAnimation(0.3);
 
   return (
-    <section id="extra" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+    <section id="extra" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -38,7 +38,7 @@ export default function Achievements() {
           {achievements.achievements.slice(0, 6).map((achievement) => (
             <div
               key={achievement.id}
-              className="bg-gray-900/80 border-2 border-gray-700 rounded-xl p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gray-900/50 border-2 border-gray-600 rounded-xl p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 group relative overflow-hidden"
             >
               {/* Efecto de fondo gradiente */}
               <div className={`absolute inset-0 bg-gradient-to-br ${getLevelColor(achievement.level)} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -84,11 +84,11 @@ export default function Achievements() {
         style={{ transitionDelay: isSummaryVisible ? '0.3s' : '0s' }}
       >
         <div className="max-w-2xl mx-auto mt-12 grid grid-cols-2 gap-4">
-          <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-cyan-500/30">
+          <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-cyan-500/30 backdrop-blur-sm">
             <div className="text-2xl font-bold text-cyan-400">{achievements.summary.total}</div>
             <div className="text-gray-400 text-base">{achievements.summary.labels.totalAchievements}</div>
           </div>
-          <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-green-500/30">
+          <div className="text-center p-4 bg-gray-900/50 rounded-xl border border-green-500/30 backdrop-blur-sm">
             <div className="text-2xl font-bold text-green-400">{achievements.summary.completed}</div>
             <div className="text-gray-400 text-base">{achievements.summary.labels.completed}</div>
           </div>

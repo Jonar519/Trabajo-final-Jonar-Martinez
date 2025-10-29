@@ -48,6 +48,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.classList.remove('light', 'dark');
     root.classList.add(currentResolvedTheme);
 
+    // Forzar repaint en móvil para evitar áreas blancas
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      document.body.style.display = 'none';
+      document.body.offsetHeight; // Trigger reflow
+      document.body.style.display = '';
+    }
+
     // Guardar en localStorage
     localStorage.setItem('portfolio-theme', theme);
   }, [theme, mounted]);
@@ -64,6 +71,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const root = window.document.documentElement;
       root.classList.remove('light', 'dark');
       root.classList.add(newResolvedTheme);
+
+      // Forzar repaint en móvil
+      if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+        document.body.style.display = 'none';
+        document.body.offsetHeight;
+        document.body.style.display = '';
+      }
     };
 
     mediaQuery.addEventListener('change', handleChange);

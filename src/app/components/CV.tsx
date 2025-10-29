@@ -49,7 +49,7 @@ export default function CV() {
   };
 
   return (
-    <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+    <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -70,7 +70,7 @@ export default function CV() {
           className={`reveal-text ${isSkillsVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isSkillsVisible ? '0.2s' : '0s' }}
         >
-          <div className="bg-white dark:bg-gray-900 border-2 border-cyan-500 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
+          <div className="bg-white dark:bg-gray-900/80 border-2 border-cyan-500 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-cyan-600 dark:text-cyan-300 mb-6 flex items-center gap-2 justify-center">
               <span className="text-cyan-500">⚡</span> {cv.sections.technicalSkills}
             </h3>
@@ -104,7 +104,7 @@ export default function CV() {
           className={`reveal-text ${isEducationVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isEducationVisible ? '0.3s' : '0s' }}
         >
-          <div className="bg-white dark:bg-gray-900 border-2 border-purple-500 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
+          <div className="bg-white dark:bg-gray-900/80 border-2 border-purple-500 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-300 mb-4 flex items-center gap-2 justify-center">
               <span className="text-purple-500">🎓</span> {cv.sections.education}
             </h3>

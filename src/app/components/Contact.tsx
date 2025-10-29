@@ -84,7 +84,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -110,7 +110,7 @@ export default function Contact() {
         >
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Columna Izquierda - Información de Contacto */}
-            <div className="lg:col-span-1 bg-white dark:bg-gray-900 border-2 border-indigo-400 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
+            <div className="lg:col-span-1 bg-white dark:bg-gray-900/80 border-2 border-indigo-400 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
               <div className="text-center mb-6">
                 <Image
                   src="/perfil.jpeg"
@@ -202,7 +202,7 @@ export default function Contact() {
                 className={`reveal-text ${isFormVisible ? 'revealed' : ''}`}
                 style={{ transitionDelay: isFormVisible ? '0.3s' : '0s' }}
               >
-                <div className="bg-white dark:bg-gray-900 border-2 border-pink-500 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+                <div className="bg-white dark:bg-gray-900/80 border-2 border-pink-500 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
                   {/* TÍTULO DEL FORMULARIO CORREGIDO - CONDICIONAL */}
                   <h3 
                     className="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-3 justify-center"
