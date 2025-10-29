@@ -82,6 +82,57 @@ body {
   color: #ffffff !important;
 }
 
+/* ===== CORRECCIÓN ESPECÍFICA PARA TECNOLOGÍAS EN PROYECTOS - MÓVIL MODO OSCURO ===== */
+
+@media (max-width: 768px) {
+  .dark .px-3.py-1.bg-gray-100 {
+    background-color: transparent !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    color: rgb(34, 211, 238) !important;
+  }
+  
+  .dark .px-3.py-1.text-gray-900 {
+    color: rgb(34, 211, 238) !important;
+  }
+  
+  /* Asegurar que los badges de tecnologías sean visibles en móvil modo oscuro */
+  .dark [class*="bg-gray-100"] {
+    background-color: transparent !important;
+    border: 1px solid rgba(34, 211, 238, 0.4) !important;
+  }
+  
+  .dark [class*="text-gray-900"] {
+    color: rgb(34, 211, 238) !important;
+  }
+
+  /* Corrección específica para badges de tecnologías en proyectos */
+  .dark .bg-gray-100.dark\:bg-transparent {
+    background-color: transparent !important;
+    border: 1px solid rgba(34, 211, 238, 0.4) !important;
+  }
+  
+  .dark .text-gray-900.dark\:text-cyan-300 {
+    color: rgb(34, 211, 238) !important;
+  }
+}
+
+/* Para tablets también aplicar corrección */
+@media (max-width: 1024px) {
+  .dark .px-3.py-1.bg-gray-100.dark\:bg-gray-800 {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    border: 1px solid rgba(34, 211, 238, 0.3) !important;
+  }
+}
+
+/* Asegurar que en desktop se mantenga el diseño original */
+@media (min-width: 769px) {
+  .dark .px-3.py-1.bg-gray-100.dark\:bg-gray-800 {
+    background-color: rgba(31, 41, 55, 0.8) !important;
+    border: none !important;
+    color: white !important;
+  }
+}
+
 /* CORRECCIONES ESPECÍFICAS PARA MÓVIL EN MODO OSCURO */
 @media (max-width: 768px) {
   .dark body {

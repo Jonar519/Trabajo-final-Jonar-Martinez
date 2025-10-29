@@ -197,12 +197,16 @@ export default function Projects() {
                           {project.description}
                         </p>
 
-                        {/* Tecnologías */}
+                        {/* Tecnologías - CORREGIDO ESPECÍFICAMENTE PARA MÓVIL EN MODO OSCURO */}
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.technologies.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white text-sm rounded-full font-medium transition-all duration-300 hover:scale-105"
+                              className="px-3 py-1 bg-gray-100 text-gray-900 text-sm rounded-full font-medium transition-all duration-300 hover:scale-105
+                                /* Modo oscuro general */
+                                dark:bg-transparent dark:border dark:border-cyan-500/50 dark:text-cyan-300
+                                /* Desktop mantiene diseño original */
+                                md:dark:bg-gray-800 md:dark:border-0 md:dark:text-white"
                             >
                               {tech}
                             </span>
