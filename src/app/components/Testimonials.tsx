@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -20,28 +20,33 @@ export default function Testimonials() {
 
   const totalTestimonials = testimonials.testimonials.length;
 
-  const nextTestimonial = () => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    setActiveTestimonio((prev) => (prev + 1) % totalTestimonials);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const prevTestimonial = () => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    setActiveTestimonio((prev) => (prev - 1 + totalTestimonials) % totalTestimonials);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
+  // Auto-avance cada 7 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isTransitioning) {
+        goToTestimonial((activeTestimonio + 1) % totalTestimonials);
+      }
+    }, 7000);
+    return () => clearInterval(interval);
+  }, [activeTestimonio, isTransitioning, totalTestimonials]);
 
   const goToTestimonial = (index: number) => {
     if (isTransitioning || index === activeTestimonio) return;
     
     setIsTransitioning(true);
     setActiveTestimonio(index);
-    setTimeout(() => setIsTransitioning(false), 600);
+    
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 600);
+  };
+
+  const nextTestimonial = () => {
+    goToTestimonial((activeTestimonio + 1) % totalTestimonials);
+  };
+
+  const prevTestimonial = () => {
+    goToTestimonial((activeTestimonio - 1 + totalTestimonials) % totalTestimonials);
   };
 
   return (
@@ -64,7 +69,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonio principal con transición suave */}
+        {/* Testimonio principal con transición suave MEJORADA */}
         <div 
           ref={testimonialRef}
           className={`reveal-text ${isTestimonialVisible ? 'revealed' : ''}`}
@@ -74,13 +79,16 @@ export default function Testimonials() {
             {testimonials.testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`absolute inset-0 transition-all duration-600 ease-out ${
+                className={`absolute inset-0 transition-all duration-600 ease-in-out transform ${
                   index === activeTestimonio
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-10 scale-95 pointer-events-none"
-                }`}
+                    ? "opacity-100 translate-y-0 scale-100 z-10"
+                    : "opacity-0 translate-y-8 scale-95 -z-10"
+                } ${isTransitioning ? 'transitioning' : ''}`}
+                style={{
+                  transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
               >
-                <div className="bg-gray-50/95 dark:bg-gray-900/50 border border-amber-500/30 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl h-full">
+                <div className="bg-gray-50/95 dark:bg-gray-900/50 border border-amber-500/30 rounded-2xl p-8 sm:p-12 backdrop-blur-sm shadow-2xl h-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]">
                   <div className="text-center mb-8">
                     <div className="flex justify-center mb-6">
                       <Image
@@ -88,13 +96,13 @@ export default function Testimonials() {
                         alt={testimonial.name}
                         width={80}
                         height={80}
-                        className="rounded-full border-2 border-amber-400 shadow-lg transition-transform duration-600"
+                        className="rounded-full border-2 border-amber-400 shadow-lg transition-transform duration-600 hover:scale-110"
                       />
                     </div>
                     
                     <div className="flex justify-center mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-amber-400 text-2xl">★</span>
+                        <span key={i} className="text-amber-400 text-2xl transition-all duration-300 hover:scale-110">★</span>
                       ))}
                     </div>
                     
@@ -123,7 +131,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Navegación inferior con animación */}
+        {/* Navegación inferior con animación MEJORADA */}
         <div 
           ref={controlsRef}
           className={`reveal-text ${isControlsVisible ? 'revealed' : ''}`}
@@ -135,8 +143,8 @@ export default function Testimonials() {
               disabled={isTransitioning}
               className={`px-6 py-3 text-base bg-amber-600 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
                 isTransitioning 
-                  ? "opacity-50 cursor-not-allowed" 
-                  : "hover:bg-amber-500 hover:scale-105"
+                  ? "opacity-50 cursor-not-allowed scale-95" 
+                  : "hover:bg-amber-500 hover:scale-105 active:scale-95 hover:shadow-lg"
               }`}
             >
               ◀ Anterior
@@ -148,11 +156,11 @@ export default function Testimonials() {
                   key={index}
                   onClick={() => goToTestimonial(index)}
                   disabled={isTransitioning}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ease-out ${
                     index === activeTestimonio
                       ? "bg-amber-400 scale-125 shadow-[0_0_10px_rgba(245,158,11,0.8)]"
-                      : "bg-amber-600 hover:bg-amber-500"
-                  } ${isTransitioning ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                      : "bg-amber-600 hover:bg-amber-500 hover:scale-110"
+                  } ${isTransitioning ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
                 />
               ))}
             </div>
@@ -162,8 +170,8 @@ export default function Testimonials() {
               disabled={isTransitioning}
               className={`px-6 py-3 text-base bg-amber-600 text-white rounded-lg transition-all duration-300 flex items-center gap-2 ${
                 isTransitioning 
-                  ? "opacity-50 cursor-not-allowed" 
-                  : "hover:bg-amber-500 hover:scale-105"
+                  ? "opacity-50 cursor-not-allowed scale-95" 
+                  : "hover:bg-amber-500 hover:scale-105 active:scale-95 hover:shadow-lg"
               }`}
             >
               Siguiente ▶
@@ -172,7 +180,7 @@ export default function Testimonials() {
 
           {/* Contador */}
           <div className="text-center mt-6">
-            <span className="text-amber-600 dark:text-amber-400 text-base">
+            <span className="text-amber-600 dark:text-amber-400 text-base transition-all duration-300">
               {activeTestimonio + 1} / {testimonials.testimonials.length}
             </span>
           </div>

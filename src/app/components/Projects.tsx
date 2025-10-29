@@ -18,31 +18,36 @@ export default function Projects() {
 
   const totalProjects = projects.projects.length;
 
-  const nextProject = () => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    setActiveIndex((prev) => (prev + 1) % totalProjects);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const prevProject = () => {
-    if (isTransitioning) return;
-    
-    setIsTransitioning(true);
-    setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
+  // Auto-avance cada 6 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isTransitioning) {
+        goToProject((activeIndex + 1) % totalProjects);
+      }
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [activeIndex, isTransitioning, totalProjects]);
 
   const goToProject = (index: number) => {
     if (isTransitioning || index === activeIndex) return;
     
     setIsTransitioning(true);
     setActiveIndex(index);
-    setTimeout(() => setIsTransitioning(false), 600);
+    
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 800); // Coincidir con la duración de la animación
   };
 
-  // Función para calcular la posición de cada proyecto
+  const nextProject = () => {
+    goToProject((activeIndex + 1) % totalProjects);
+  };
+
+  const prevProject = () => {
+    goToProject((activeIndex - 1 + totalProjects) % totalProjects);
+  };
+
+  // Función para calcular la posición de cada proyecto - MEJORADA CON TRANSICIONES SUAVES
   const getProjectPosition = (index: number) => {
     // Calcular la distancia desde el proyecto activo
     let distance = index - activeIndex;
@@ -64,6 +69,7 @@ export default function Projects() {
         opacity: 1,
         filter: "blur(0px)",
         pointerEvents: "auto" as const,
+        transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
       };
     }
 
@@ -81,6 +87,7 @@ export default function Projects() {
         opacity,
         filter: `blur(${blur}px)`,
         pointerEvents: "auto" as const,
+        transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
       };
     }
 
@@ -98,6 +105,7 @@ export default function Projects() {
         opacity,
         filter: `blur(${blur}px)`,
         pointerEvents: "auto" as const,
+        transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
       };
     }
   };
@@ -154,11 +162,11 @@ export default function Projects() {
                 return (
                   <div
                     key={project.id}
-                    className={`absolute w-80 transition-all duration-600 ease-out ${
+                    className={`absolute w-80 transition-all duration-800 ease-out ${
                       isActive ? "cursor-default" : "cursor-pointer"
-                    }`}
+                    } ${isTransitioning ? 'pointer-events-none' : ''}`}
                     style={style}
-                    onClick={() => !isActive && goToProject(index)}
+                    onClick={() => !isActive && !isTransitioning && goToProject(index)}
                   >
                     <div className={`bg-white dark:bg-gray-900 border-2 rounded-xl overflow-hidden shadow-2xl transition-all duration-500 ${
                       isActive 
@@ -192,7 +200,7 @@ export default function Projects() {
                           {project.technologies.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="px-3 py-1 bg-gray-100 text-gray-900 text-sm rounded-full font-medium"
+                              className="px-3 py-1 bg-gray-100 text-gray-900 text-sm rounded-full font-medium transition-all duration-300 hover:scale-105"
                             >
                               {tech}
                             </span>
@@ -233,8 +241,8 @@ export default function Projects() {
               disabled={isTransitioning}
               className={`absolute left-4 p-4 rounded-full shadow-lg transition-all duration-300 z-40 ${
                 isTransitioning 
-                  ? "bg-purple-400/50 cursor-not-allowed" 
-                  : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110"
+                  ? "bg-purple-400/50 cursor-not-allowed scale-95" 
+                  : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110 active:scale-105"
               }`}
             >
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -247,8 +255,8 @@ export default function Projects() {
               disabled={isTransitioning}
               className={`absolute right-4 p-4 rounded-full shadow-lg transition-all duration-300 z-40 ${
                 isTransitioning 
-                  ? "bg-purple-400/50 cursor-not-allowed" 
-                  : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110"
+                  ? "bg-purple-400/50 cursor-not-allowed scale-95" 
+                  : "bg-purple-600/80 hover:bg-purple-500 hover:scale-110 active:scale-105"
               }`}
             >
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,18 +279,18 @@ export default function Projects() {
                 key={index}
                 onClick={() => goToProject(index)}
                 disabled={isTransitioning}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ease-out ${
                   index === activeIndex
                     ? "bg-purple-400 scale-125 shadow-[0_0_10px_rgba(168,85,247,0.8)]"
-                    : "bg-purple-600 hover:bg-purple-400"
-                } ${isTransitioning ? "cursor-not-allowed" : "cursor-pointer"}`}
+                    : "bg-purple-600 hover:bg-purple-400 hover:scale-110"
+                } ${isTransitioning ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
               />
             ))}
           </div>
 
           {/* Contador */}
           <div className="text-center mt-4 space-y-2">
-            <span className="text-purple-600 dark:text-purple-300 text-base block">
+            <span className="text-purple-600 dark:text-purple-300 text-base block transition-all duration-300">
               {activeIndex + 1} / {totalProjects}
             </span>
           </div>
