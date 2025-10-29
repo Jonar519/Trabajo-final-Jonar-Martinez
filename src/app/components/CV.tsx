@@ -1,5 +1,6 @@
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function CV() {
   const { content } = useContent();
@@ -48,13 +49,16 @@ export default function CV() {
   };
 
   return (
-    <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black">
-      {/* Título con animación */}
+    <section id="cv" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
+      {/* Título con animación - CORREGIDO */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-12">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-12 pb-1 leading-tight">
           {cv.title}
         </h2>
       </div>

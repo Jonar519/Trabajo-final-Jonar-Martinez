@@ -1,5 +1,6 @@
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function Achievements() {
   const { content, getLevelColor } = useContent();
@@ -10,13 +11,16 @@ export default function Achievements() {
   const { isVisible: isSummaryVisible, elementRef: summaryRef } = useScrollAnimation(0.3);
 
   return (
-    <section id="extra" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-black">
-      {/* Título con animación */}
+    <section id="extra" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
+      {/* Título con animación - CORREGIDO PARA "LOGROS" */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-4 pb-1 leading-tight">
           {achievements.title}
         </h2>
         <p className="text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto">

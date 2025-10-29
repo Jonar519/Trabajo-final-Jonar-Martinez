@@ -18,7 +18,7 @@
   --foreground: #171717;
 }
 
-/* Estilos base para dark mode */
+/* Estilos base para dark mode - CON FONDO DE UNIVERSO */
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -31,24 +31,133 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Animación para partículas flotantes */
+/* Fondo de universo para modo oscuro */
+.dark body {
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(74, 222, 128, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 40%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 60%, rgba(192, 132, 252, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%);
+  background-attachment: fixed;
+}
+
+/* CORRECCIONES PARA TÍTULOS - EVITAR RECORTE DE LETRAS */
+.text-5xl, .text-6xl, .text-8xl, .text-9xl {
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Correcciones específicas para letras problemáticas */
+.font-extrabold {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Asegurar que los textos con gradiente no recorten letras */
+.bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  padding-bottom: 2px; /* Espacio extra para letras descendentes */
+}
+
+/* Correcciones específicas para palabras problemáticas */
+h2 {
+  overflow: visible !important;
+  word-spacing: 0.05em;
+}
+
+/* Ajustes específicos para palabras con letras descendentes */
+.tracking-wide {
+  letter-spacing: 0.05em !important;
+}
+
+/* Mejoras para responsividad en textos grandes */
+@media (max-width: 768px) {
+  .text-8xl, .text-9xl {
+    font-size: 4rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  .text-6xl {
+    font-size: 3rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .text-8xl, .text-9xl {
+    font-size: 3rem !important;
+  }
+  
+  .text-6xl {
+    font-size: 2.5rem !important;
+  }
+  
+  .text-5xl {
+    font-size: 2rem !important;
+  }
+}
+
+/* Corrección específica para "Trayectoria" - letra "y" */
+.text-justify {
+  text-align: justify;
+  word-spacing: -0.05em;
+}
+
+/* Ajuste para contenedores de texto */
+.relative.z-10 {
+  overflow: visible !important;
+}
+
+.max-w-4xl, .max-w-6xl, .max-w-3xl, .max-w-2xl {
+  overflow: visible !important;
+}
+
+/* Mejoras para las partículas flotantes */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.3;
   }
   25% {
-    transform: translateY(-20px) translateX(10px);
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+    opacity: 0.6;
   }
   50% {
-    transform: translateY(-10px) translateX(20px);
+    transform: translateY(-10px) translateX(20px) rotate(180deg);
+    opacity: 0.8;
   }
   75% {
-    transform: translateY(-15px) translateX(-10px);
+    transform: translateY(-15px) translateX(-10px) rotate(270deg);
+    opacity: 0.5;
   }
 }
 
 .animate-float {
   animation: float 8s ease-in-out infinite;
+}
+
+/* Efecto de brillo para partículas */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
 }
 
 /* Animaciones para el efecto de revelado */

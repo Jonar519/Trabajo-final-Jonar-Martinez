@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTheme } from '../contexts/ThemeContext';
+import FloatingParticles from "./FloatingParticles";
 
 export default function Testimonials() {
   const [activeTestimonio, setActiveTestimonio] = useState<number>(0);
@@ -44,14 +45,17 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black">
+    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
       <div className="max-w-4xl mx-auto">
-        {/* Título con animación */}
+        {/* Título con animación - CORREGIDO */}
         <div 
           ref={titleRef}
           className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
         >
-          <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-amber-200 to-orange-400 bg-clip-text text-transparent mb-6">
+          <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-amber-200 to-orange-400 bg-clip-text text-transparent mb-6 pb-1 leading-tight">
             {testimonials.title}
           </h2>
           

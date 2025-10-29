@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <main className="bg-white dark:bg-black text-gray-900 dark:text-white font-[Poppins] selection:bg-green-500/30 transition-colors duration-300">
+        <main className="min-h-screen font-[Poppins] selection:bg-green-500/30 transition-colors duration-300">
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Hero />
           <About />

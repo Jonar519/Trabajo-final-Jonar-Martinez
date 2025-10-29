@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function Experience() {
   const [activeExperience, setActiveExperience] = useState(0);
@@ -22,13 +23,16 @@ export default function Experience() {
   }, [experience.experiences.length]);
 
   return (
-    <section id="experiencia" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-gradient-to-b from-black via-gray-900 to-black">
-      {/* Título con animación */}
+    <section id="experiencia" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
+      {/* Título con animación - CORREGIDO PARA "TRAYECTORIA" */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-12">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-12 pb-1 leading-tight">
           {experience.title}
         </h2>
       </div>

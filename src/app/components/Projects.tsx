@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -116,16 +117,16 @@ export default function Projects() {
   };
 
   return (
-    <section id="proyectos" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black relative overflow-hidden">
-      {/* Fondo decorativo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"></div>
-      
-      {/* Título con animación */}
+    <section id="proyectos" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
+      {/* Título con animación - CORREGIDO PARA "PROYECTOS" */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 relative z-10">
+        <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 pb-1 leading-tight relative z-10">
           {projects.title}
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">

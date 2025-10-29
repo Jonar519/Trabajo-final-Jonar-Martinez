@@ -6,6 +6,7 @@ import { useContent } from "@/hooks/useContent";
 import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTheme } from '../contexts/ThemeContext';
+import FloatingParticles from "./FloatingParticles";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -83,16 +84,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 bg-white dark:bg-black relative overflow-hidden">
-      {/* Fondo decorativo */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"></div>
-      
-      {/* Título con animación */}
+    <section id="contacto" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+      {/* Partículas flotantes */}
+      <FloatingParticles />
+
+      {/* Título con animación - CORREGIDO */}
       <div 
         ref={titleRef}
         className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
       >
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4 relative z-10">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4 pb-1 leading-tight relative z-10">
           {contact.title}
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">

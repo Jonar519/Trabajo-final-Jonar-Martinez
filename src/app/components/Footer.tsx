@@ -1,5 +1,6 @@
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function Footer() {
   const { content } = useContent();
@@ -12,8 +13,11 @@ export default function Footer() {
       ref={footerRef}
       className={`reveal-text ${isVisible ? 'revealed' : ''}`}
     >
-      <div className="bg-black border-t border-gray-800 py-8 sm:py-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="border-t border-gray-800 py-8 sm:py-10 relative">
+        {/* Partículas flotantes */}
+        <FloatingParticles />
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Redes Sociales */}
           <div className="flex justify-center space-x-6 mb-6">
             {socialNetworks.map((social, index) => (

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import FloatingParticles from "./FloatingParticles";
 
 export default function About() {
   const { content, handleButtonAction } = useContent();
@@ -17,11 +18,8 @@ export default function About() {
       id="acerca"
       className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 max-w-6xl mx-auto relative overflow-hidden"
     >
-      {/* Efectos de fondo sutiles */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-48 h-48 bg-green-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-64 h-64 bg-cyan-500 rounded-full blur-3xl"></div>
-      </div>
+      {/* Partículas flotantes */}
+      <FloatingParticles />
 
       <div className="relative z-10 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Imagen con animación desde la izquierda */}
@@ -49,7 +47,8 @@ export default function About() {
           className={`reveal-text ${isContentVisible ? 'revealed' : ''}`}
         >
           <div className="text-center md:text-left">
-            <h2 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-6">
+            {/* Título corregido */}
+            <h2 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-6 pb-1 leading-tight">
               {about.title}
             </h2>
             

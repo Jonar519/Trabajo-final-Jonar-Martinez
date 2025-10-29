@@ -1,49 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useContent } from "@/hooks/useContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-// Componente separado para las partículas (Client-only)
-function FloatingParticles() {
-  const [particles, setParticles] = useState<Array<{
-    left: string;
-    top: string;
-    delay: string;
-    duration: string;
-  }>>([]);
-
-  useEffect(() => {
-    const newParticles = [...Array(15)].map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 5}s`,
-      duration: `${10 + Math.random() * 10}s`
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  if (particles.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="absolute inset-0 pointer-events-none z-0">
-      {particles.map((particle, i) => (
-        <div
-          key={i}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full opacity-30 animate-float"
-          style={{
-            left: particle.left,
-            top: particle.top,
-            animationDelay: particle.delay,
-            animationDuration: particle.duration
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+import FloatingParticles from "./FloatingParticles";
 
 export default function Hero() {
   const { content } = useContent();
@@ -65,22 +24,19 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 bg-gradient-to-b from-white to-gray-100 dark:from-black dark:via-gray-900 dark:to-black relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 relative overflow-hidden"
     >
-      {/* Efectos de fondo sutiles */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      {/* Partículas flotantes */}
+      <FloatingParticles />
 
       {/* Contenido principal */}
       <div className="relative z-10 w-full max-w-4xl mx-auto">
-        {/* Título principal con animación */}
+        {/* Título principal con animación - CORREGIDO */}
         <div 
           ref={titleRef}
           className={`reveal-text ${isTitleVisible ? 'revealed' : ''}`}
         >
-          <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 leading-tight tracking-wide bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 leading-tight tracking-wide bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent pb-2">
             {hero.title}
           </h2>
         </div>
@@ -133,9 +89,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Partículas flotantes - Solo en cliente */}
-      <FloatingParticles />
     </section>
   );
 }
