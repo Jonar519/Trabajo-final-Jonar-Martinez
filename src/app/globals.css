@@ -12,6 +12,119 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* ===== CORRECCIÓN PRINCIPAL: ELIMINAR BARRAS BLANCAS EN TOPES ===== */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  /* Prevenir el bounce/overscroll en todos los navegadores */
+  overscroll-behavior: none !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Prevenir cualquier tipo de scroll más allá de los límites */
+  overflow-y: scroll !important;
+  position: relative !important;
+}
+
+/* Eliminar el efecto de bounce/elasticidad en todos los navegadores */
+html {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
+body {
+  overflow: auto !important;
+  height: 100% !important;
+}
+
+/* ===== CORRECCIÓN BARRA DE SCROLL - MODO OSCURO ===== */
+
+/* Barra de scroll para modo oscuro */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Para Firefox */
+.dark {
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 #1f2937;
+}
+
+/* ===== CORRECCIONES ESPECÍFICAS PARA MODO CLARO ===== */
+
+/* Habilidades Técnicas - Textos blancos a negros en modo claro */
+.light .text-white,
+.light .dark\:text-white {
+  color: #171717 !important;
+}
+
+/* Tecnologías y Herramientas - Títulos en modo claro */
+.light .text-cyan-300,
+.light .dark\:text-cyan-300 {
+  color: #0891b2 !important;
+}
+
+.light .text-purple-300,
+.light .dark\:text-purple-300 {
+  color: #7c3aed !important;
+}
+
+/* Contacto - Idiomas en modo claro */
+.light .text-cyan-400,
+.light .dark\:text-cyan-400 {
+  color: #0891b2 !important;
+}
+
+/* Formación Académica - Textos en modo claro */
+.light .text-gray-900.dark\:text-white,
+.light .dark\:text-white {
+  color: #171717 !important;
+}
+
+.light .text-gray-700.dark\:text-gray-300,
+.light .dark\:text-gray-300 {
+  color: #4b5563 !important;
+}
+
+/* Cards en modo claro - asegurar contraste */
+.light .bg-white .text-white,
+.light .bg-white .dark\:text-white {
+  color: #171717 !important;
+}
+
+/* Prevenir el overscroll en móviles */
+@media (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: auto !important;
+    overscroll-behavior-y: none !important;
+  }
+}
+
+/* Asegurar que el main no tenga overscroll */
+main {
+  overscroll-behavior: none !important;
+}
+
 /* Estilos base para light mode */
 .light {
   --background: #ffffff;
@@ -22,13 +135,6 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Fondo de universo para modo oscuro - CORREGIDO PARA MÓVIL */
@@ -44,7 +150,7 @@ body {
   min-height: 100vh;
 }
 
-/* ===== CORRECCIONES ESPECÍFICAS PARA TEXTO EN MODO OSCURO ===== */
+/* ... (el resto de tu CSS permanece igual) ... */
 
 /* Textos grises oscuros -> blancos en modo oscuro */
 .dark .text-gray-300,

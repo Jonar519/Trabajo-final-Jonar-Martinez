@@ -20,7 +20,8 @@ export default function Home() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <main className="min-h-screen font-[Poppins] selection:bg-green-500/30 transition-colors duration-300">
+        {/* Agregar overscroll-behavior-none para prevenir el bounce */}
+        <main className="min-h-screen font-[Poppins] selection:bg-green-500/30 transition-colors duration-300 overscroll-none">
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Hero />
           <About />

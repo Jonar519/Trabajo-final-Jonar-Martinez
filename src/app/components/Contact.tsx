@@ -191,6 +191,7 @@ export default function Contact() {
                     <div key={index} className="mb-3">
                       {/* Idioma cambiado a blanco en modo oscuro */}
                       <p className="text-gray-700 dark:text-white text-base font-semibold">{lang.language}</p>
+                      {/* Nivel de idioma corregido para modo claro */}
                       <p className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">{lang.level}</p>
                     </div>
                   ))}
