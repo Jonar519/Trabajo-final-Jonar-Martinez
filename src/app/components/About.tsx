@@ -52,7 +52,8 @@ export default function About() {
               {about.title}
             </h2>
             
-            <p className="text-gray-300 leading-relaxed text-lg sm:text-xl mb-8">
+            {/* Texto cambiado a blanco en modo oscuro */}
+            <p className="text-gray-600 dark:text-white leading-relaxed text-lg sm:text-xl mb-8">
               {about.content}
             </p>
 
@@ -77,7 +78,8 @@ export default function About() {
                     }`}>
                       {stat.value}
                     </div>
-                    <div className="text-gray-400 text-base">{stat.label}</div>
+                    {/* Label cambiado a blanco en modo oscuro */}
+                    <div className="text-gray-600 dark:text-white text-base">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -90,10 +92,11 @@ export default function About() {
               style={{ transitionDelay: isFocusVisible ? '0.3s' : '0s' }}
             >
               <div className="mb-8 p-6 bg-gray-900/50 rounded-xl border border-gray-700 backdrop-blur-sm">
-                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2 justify-center md:justify-start">
+                <h3 className="text-xl font-semibold mb-3 flex items-center gap-2 justify-center md:justify-start text-white">
                   {about.focus.title}
                 </h3>
-                <p className="text-gray-300 text-base leading-relaxed">
+                {/* Texto cambiado a blanco en modo oscuro */}
+                <p className="text-gray-600 dark:text-white text-base leading-relaxed">
                   {about.focus.content}
                 </p>
               </div>

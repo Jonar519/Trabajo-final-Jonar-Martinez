@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 relative overflow-hidden bg-transparent"
     >
       {/* Partículas flotantes */}
       <FloatingParticles />
@@ -41,13 +41,13 @@ export default function Hero() {
           </h2>
         </div>
         
-        {/* Descripción con animación escalonada */}
+        {/* Descripción con animación escalonada - Cambiada a blanco en modo oscuro */}
         <div 
           ref={descRef}
           className={`reveal-text ${isDescVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isDescVisible ? '0.2s' : '0s' }}
         >
-          <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-gray-600 dark:text-white text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
             {hero.description}
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function Hero() {
           className={`reveal-text ${isStatsVisible ? 'revealed' : ''}`}
           style={{ transitionDelay: isStatsVisible ? '0.4s' : '0s' }}
         >
-          <div className="flex justify-center gap-6 mb-8 text-base text-gray-500 dark:text-gray-400">
+          <div className="flex justify-center gap-6 mb-8 text-base text-gray-500 dark:text-white">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span>{hero.status}</span>

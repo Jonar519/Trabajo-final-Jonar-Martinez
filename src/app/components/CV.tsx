@@ -112,7 +112,8 @@ export default function CV() {
               {cv.education.map((edu, index) => (
                 <div key={index} className="border-l-4 border-purple-500 pl-4 hover:border-l-cyan-500 transition-all duration-300 hover:scale-105">
                   <h4 className="text-gray-900 dark:text-white font-bold text-xl">{edu.degree}</h4>
-                  <p className="text-gray-700 dark:text-gray-300 text-base font-medium">{edu.institution}</p>
+                  {/* Institución cambiada a blanco en modo oscuro */}
+                  <p className="text-gray-700 dark:text-white text-base font-medium">{edu.institution}</p>
                   <p className="text-purple-600 dark:text-purple-400 text-sm font-semibold font-mono">{edu.year}</p>
                 </div>
               ))}

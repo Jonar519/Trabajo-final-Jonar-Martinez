@@ -119,7 +119,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="proyectos" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden">
+    <section id="proyectos" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -131,7 +131,8 @@ export default function Projects() {
         <h2 className="text-5xl sm:text-6xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-4 pb-1 leading-tight relative z-10">
           {projects.title}
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
+        {/* Descripción cambiada a blanco en modo oscuro */}
+        <p className="text-gray-600 dark:text-white text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
           {projects.description}
         </p>
       </div>
@@ -191,7 +192,8 @@ export default function Projects() {
                           {project.title}
                         </h3>
                         
-                        <p className="text-gray-600 dark:text-gray-400 text-base mb-4 leading-relaxed">
+                        {/* Descripción cambiada a blanco en modo oscuro */}
+                        <p className="text-gray-600 dark:text-white text-base mb-4 leading-relaxed">
                           {project.description}
                         </p>
 
@@ -200,7 +202,7 @@ export default function Projects() {
                           {project.technologies.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="px-3 py-1 bg-gray-100 text-gray-900 text-sm rounded-full font-medium transition-all duration-300 hover:scale-105"
+                              className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white text-sm rounded-full font-medium transition-all duration-300 hover:scale-105"
                             >
                               {tech}
                             </span>

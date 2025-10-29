@@ -96,7 +96,8 @@ export default function Contact() {
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent mb-4 pb-1 leading-tight relative z-10">
           {contact.title}
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
+        {/* Descripción cambiada a blanco en modo oscuro */}
+        <p className="text-gray-600 dark:text-white text-lg text-center mb-12 max-w-2xl mx-auto relative z-10">
           {contact.description}
         </p>
       </div>
@@ -138,9 +139,10 @@ export default function Contact() {
                   >
                     <span className="text-cyan-600">📧</span> {cv.sections.contact}
                   </h4>
-                  <p className="text-gray-700 dark:text-gray-300 text-base mb-2 font-medium">{content.site.email}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-base mb-2 font-medium">{content.site.phone}</p>
-                  <p className="text-gray-700 dark:text-gray-300 text-base font-medium">{content.site.location}</p>
+                  {/* Información de contacto cambiada a blanco en modo oscuro */}
+                  <p className="text-gray-700 dark:text-white text-base mb-2 font-medium">{content.site.email}</p>
+                  <p className="text-gray-700 dark:text-white text-base mb-2 font-medium">{content.site.phone}</p>
+                  <p className="text-gray-700 dark:text-white text-base font-medium">{content.site.location}</p>
                 </div>
 
                 {/* Redes Sociales - TÍTULO CORREGIDO - CONDICIONAL */}
@@ -187,7 +189,8 @@ export default function Contact() {
                   </h4>
                   {cv.languages.map((lang, index) => (
                     <div key={index} className="mb-3">
-                      <p className="text-gray-700 dark:text-gray-300 text-base font-semibold">{lang.language}</p>
+                      {/* Idioma cambiado a blanco en modo oscuro */}
+                      <p className="text-gray-700 dark:text-white text-base font-semibold">{lang.language}</p>
                       <p className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">{lang.level}</p>
                     </div>
                   ))}

@@ -44,6 +44,44 @@ body {
   min-height: 100vh;
 }
 
+/* ===== CORRECCIONES ESPECÍFICAS PARA TEXTO EN MODO OSCURO ===== */
+
+/* Textos grises oscuros -> blancos en modo oscuro */
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700 {
+  color: #ffffff !important;
+}
+
+/* Textos específicos que deben mantenerse con contraste */
+.dark .text-cyan-400,
+.dark .text-green-400,
+.dark .text-purple-400,
+.dark .text-pink-400,
+.dark .text-indigo-400,
+.dark .text-amber-400,
+.dark .text-blue-400 {
+  /* Mantener colores para énfasis */
+}
+
+/* Placeholders en modo oscuro */
+.dark ::placeholder {
+  color: #a0a0a0 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #a0a0a0 !important;
+}
+
+/* Textos en cards y contenedores */
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #ffffff !important;
+}
+
 /* CORRECCIONES ESPECÍFICAS PARA MÓVIL EN MODO OSCURO */
 @media (max-width: 768px) {
   .dark body {

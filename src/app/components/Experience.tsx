@@ -46,7 +46,7 @@ export default function Experience() {
   };
 
   return (
-    <section id="experiencia" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+    <section id="experiencia" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -87,11 +87,12 @@ export default function Experience() {
                   <div className="text-center mb-4 sm:mb-6">
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">{exp.title}</h3>
                     <p className="text-cyan-300 text-lg sm:text-xl font-semibold">{exp.company}</p>
-                    <p className="text-gray-400 text-sm sm:text-base mt-1">{exp.period}</p>
+                    {/* Periodo cambiado a blanco en modo oscuro */}
+                    <p className="text-gray-400 dark:text-white text-sm sm:text-base mt-1">{exp.period}</p>
                   </div>
 
-                  {/* Descripción */}
-                  <p className="text-gray-300 text-center mb-4 sm:mb-6 text-base sm:text-xl leading-relaxed flex-grow-0">
+                  {/* Descripción cambiada a blanco en modo oscuro */}
+                  <p className="text-gray-300 dark:text-white text-center mb-4 sm:mb-6 text-base sm:text-xl leading-relaxed flex-grow-0">
                     {exp.description}
                   </p>
 
@@ -104,7 +105,7 @@ export default function Experience() {
                       {exp.achievements.map((achievement, i) => (
                         <li 
                           key={i} 
-                          className="flex items-start gap-3 text-gray-300 text-sm sm:text-base bg-gray-800/50 rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/70"
+                          className="flex items-start gap-3 text-gray-300 dark:text-white text-sm sm:text-base bg-gray-800/50 rounded-lg p-3 transition-all duration-300 hover:bg-gray-800/70"
                         >
                           <span className="text-green-400 mt-0.5 flex-shrink-0">✓</span>
                           <span className="leading-relaxed">{achievement}</span>

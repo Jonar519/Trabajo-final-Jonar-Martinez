@@ -50,7 +50,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative">
+    <section id="testimonios" className="min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative bg-transparent">
       {/* Partículas flotantes */}
       <FloatingParticles />
 
@@ -64,7 +64,8 @@ export default function Testimonials() {
             {testimonials.title}
           </h2>
           
-          <p className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl text-center mb-8 sm:mb-12 px-4">
+          {/* Descripción cambiada a blanco en modo oscuro */}
+          <p className="text-gray-600 dark:text-white text-lg sm:text-xl text-center mb-8 sm:mb-12 px-4">
             {testimonials.description}
           </p>
         </div>
@@ -124,7 +125,8 @@ export default function Testimonials() {
                     
                     {/* Contenedor scrollable para texto largo */}
                     <div className="max-h-[200px] sm:max-h-[250px] overflow-y-auto px-1 sm:px-2">
-                      <p className="text-gray-800 dark:text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed text-center italic relative z-10 transition-all duration-600">
+                      {/* Texto del testimonio cambiado a blanco en modo oscuro */}
+                      <p className="text-gray-800 dark:text-white text-base sm:text-lg md:text-xl leading-relaxed text-center italic relative z-10 transition-all duration-600">
                         {testimonial.text}
                       </p>
                     </div>
